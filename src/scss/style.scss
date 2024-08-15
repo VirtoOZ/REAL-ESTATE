@@ -85,16 +85,96 @@ body {
 //@import "datepicker";
 // @import "../scss/libs/gallery/lightgallery";
 // @import "popup";
-// @import "header";
-// @import "footer";
+@import "header";
+@import "footer";
 // @import "home";
 //</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>=================================
 
 //<ОСНОВНОЙ БЛОК>=================================
 .page {
 	flex: 1 1 auto;
+	// .page__main-block
+	&__main-block {
+		@include adaptiv-value("margin-top", 103, 60, 1);
+	}
 }
 //=================================
+.main-block {
+	// .main-block__container
+	&__container {
+	}
+	// .main-block__body
+	&__body {
+	}
+	// .main-block__top
+	&__top {
+	}
+	// .main-block__bottom
+	&__bottom {
+	}
+}
+.top-block {
+	// .top-block__content
+	&__content {
+	}
+	// .top-block__image
+	&__image {
+	}
+}
+.content-top {
+	// .content-top__sublable
+	&__sublable {
+	}
+	// .content-top__box
+	&__box {
+	}
+	// .content-top__form
+	&__form {
+	}
+}
+.title-box {
+	// .title-box__title
+	&__title {
+	}
+	// .title-box__text
+	&__text {
+	}
+}
+.form-content {
+	// .form-content__input
+	&__input {
+	}
+	// .form-content__button
+	&__button {
+	}
+}
+
+.bottom-block {
+	// .bottom-block__body
+	&__body {
+	}
+	// .bottom-block__subtitle
+	&__subtitle {
+	}
+	// .bottom-block__vendors
+	&__vendors {
+	}
+	// .bottom-block__controls
+	&__controls {
+	}
+}
+.vendors {
+	// .vendors__list
+	&__list {
+	}
+	// .vendors__item
+	&__item {
+	}
+	// .vendors__link
+	&__link {
+	}
+}
+
 //=================================
 
 //<ХЛЕБНЫЕ КРОШКИ>=================================

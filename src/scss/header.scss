@@ -1,5 +1,68 @@
 //<HEADER>=======================================
 .header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+
+	// .header__wrapper
+	&__wrapper {
+	}
+	// .header__container
+	&__container {
+	}
+	// .header__body
+	&__body {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		min-height: 103px;
+		@include adaptiv-value("min-height", 103, 60, 1);
+	}
+	// .header__logo
+	&__logo {
+		flex: 1 1 auto;
+		color: $darkGrayColor;
+		font-weight: 800;
+		@include adaptiv-value("font-size", 23, 18, 1);
+		padding: 0px 10px 0px 0px;
+	}
+	// .header__menu
+	&__menu {
+	}
+}
+.menu {
+	// .menu__body
+	&__body {
+	}
+	// .menu__list
+	&__list {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		// align-items: center;
+		@include adaptiv-value("column-gap", 46, 15, 1);
+		@include adaptiv-value("row-gap", 5, 3, 1);
+	}
+	// .menu__item
+	&__item {
+	}
+	// .menu__link
+	&__link {
+		color: #000;
+		font-family: "DMSans";
+		font-size: 13px;
+		font-weight: 700;
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+	// .menu__icon
+	&__icon {
+	}
 }
 //</HEADER>=======================================
 
