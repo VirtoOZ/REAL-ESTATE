@@ -9,7 +9,7 @@ import * as flsFunctions from './modules/functions.js'
 // import './files/script.js';
 // import './files/functions.js';
 // import './files/sliders.js';
-// import './files/forms.js';
+import './files/forms.js';
 // import './files/popup.js';
 // import './files/gallery.js';
 //=================================
