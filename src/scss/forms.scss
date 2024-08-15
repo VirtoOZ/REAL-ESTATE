@@ -2,8 +2,8 @@
 .form {
 	// max-width: 550px;
 	// margin: 10px auto 0px auto;
-	background-color: $grayColor;
-	border-radius: 5px;
+	// background-color: $grayColor;
+	// border-radius: 5px;
 	// .form__body
 	&__body {
 		padding: 20px;
@@ -99,11 +99,11 @@
 	padding: 0px 15px;
 	justify-content: center;
 	align-items: center;
-	min-height: 48px;
+	// min-height: 48px;
 	// object-fit: contain;
 	// background-color: #f68038;
 	// color: #fff;
-	transition: all 0.3s ease 0s;
+	// transition: all 0.3s ease 0s;
 	// text-transform: uppercase;
 	// font-weight: 900;
 	// font-size: 12px;
@@ -261,8 +261,6 @@ textarea {
 		0px 1.852px 3.148px 0px rgba(0, 0, 0, 0.01);
 	width: 100%;
 	@include adaptiv-value("min-height", 86, 43, 1);
-
-	min-height: 86px;
 	display: block;
 	padding: 0px 15px;
 	&._focus {

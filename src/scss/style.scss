@@ -14,7 +14,7 @@
 //</Иконочные шрифты>=================================
 
 //<Swiper>=================================
-// @import "swiper";
+@import "swiper";
 //</Swiper>=================================
 
 //<Шрифт по умолчанию>=================================
@@ -95,13 +95,30 @@ body {
 	flex: 1 1 auto;
 	// .page__main-block
 	&__main-block {
-		@include adaptiv-value("padding-top", 103, 60, 1);
+		@include adaptiv-value("margin-bottom", 230, 50, 1);
+	}
+	// .page__how
+	&__how {
 	}
 }
-//=================================
+//<MAIN-BLOCK>=================================
 .main-block {
 	// .main-block__container
 	&__container {
+		@include adaptiv-value("padding-top", 103, 60, 1);
+		position: relative;
+		@media (min-width: ($md3+px)) {
+			&::after {
+				content: "";
+				bottom: 0;
+				left: calc(794 / 1170 * 100%);
+				width: 100vw;
+				height: 100%;
+				position: absolute;
+				z-index: 1;
+				background-color: #bdccff;
+			}
+		}
 	}
 	// .main-block__body
 	&__body {
@@ -109,20 +126,16 @@ body {
 		display: flex;
 		flex-direction: column;
 		position: relative;
-		&::after {
-			content: "";
-			bottom: 0;
-			left: calc(794 / 1170 * 100%);
-			width: 100%;
-			height: 100vh;
-			position: absolute;
-			z-index: 1;
-			background-color: #bdccff;
-		}
+		z-index: 3;
 	}
 	// .main-block__top
 	&__top {
-		display: flex;
+		@media (min-width: ($md3+px)) {
+			display: flex;
+		}
+		@media (max-width: ($md3+px)) {
+			margin: 0px 0px 20px 0px;
+		}
 	}
 	// .main-block__bottom
 	&__bottom {
@@ -135,14 +148,27 @@ body {
 	&__content {
 		flex: 0 1 50%;
 	}
-	// .top-block__image
-	&__image {
+	// .top-block__slider
+	&__slider {
 		flex: 0 1 50%;
-		padding: 0px 0px 49% 0px;
-		position: relative;
-		z-index: 2;
-		img {
+		min-width: 0;
+	}
+}
+.slider-block {
+	// .slider-block__body
+	&__body {
+		// position: relative;
+		@media (max-width: ($md5+px)) {
+			margin: 0px -15px;
 		}
+	}
+	// .slider-block__slide
+	&__slide {
+		// position: relative;
+	}
+	// .slider-block__image
+	&__image {
+		padding: 98% 0px 0px 0px;
 	}
 }
 .content-top {
@@ -154,29 +180,61 @@ body {
 		font-weight: 700;
 		margin: 0px 0px calc(24px / 22px * 1em) 0px;
 		@include adaptiv-value("margin-top", 40, 20, 1);
+		text-transform: uppercase;
 	}
 	// .content-top__box
 	&__box {
 		padding: 0px 10px;
 		@include adaptiv-value("margin-bottom", 48, 22, 1);
+		h1 {
+			@include adaptiv-value("font-size", 54, 30, 1);
+		}
 	}
 	// .content-top__form
 	&__form {
+		@include adaptiv-value("margin-bottom", 20, 10, 1);
 	}
 }
 .form-content {
 	position: relative;
+	// .form-content__icon
+	&__icon {
+		&::before {
+			@include adaptiv-value("left", 33, 8, 1);
+			@include adaptiv-value("font-size", 21, 16, 1);
+			color: $darkGrayColor;
+			position: absolute;
+			z-index: 1;
+			@media (min-width: ($md3+px)) {
+				top: 50%;
+				transform: translate(0px, -50%);
+			}
+			@media (max-width: ($md3+px)) {
+				top: 23%;
+				transform: translate(0px, -50%);
+			}
+		}
+	}
 	// .form-content__input
 	&__input {
+		@include adaptiv-value("padding-left", 75, 32, 1);
+		@include adaptiv-value("font-size", 20, 16, 1);
+		color: $darkGrayColor;
+		&::placeholder {
+			color: $grayColor;
+		}
+
+		@media (max-width: ($md3+px)) {
+			&:not(:last-child) {
+				margin: 0px 0px 10px 0px;
+			}
+		}
+		@media (min-width: ($md3+px)) {
+		}
 	}
 	// .form-content__button
 	&__button {
-		position: absolute;
-		z-index: 3;
-		top: 0;
-		right: 0;
 		@include adaptiv-value("min-height", 86, 43, 1);
-		transform: translate(100%, 0px);
 		background-color: $orangeColor;
 		// @include adaptiv-value("padding-top", 30, 15, 1);
 		// @include adaptiv-value("padding-bottom", 30, 15, 1);
@@ -186,6 +244,16 @@ body {
 		font-size: 17px;
 		font-weight: 700;
 		letter-spacing: 0.012rem;
+		@media (max-width: ($md3+px)) {
+			width: 100%;
+		}
+		@media (min-width: ($md3+px)) {
+			transform: translate(100%, 0px);
+			position: absolute;
+			z-index: 3;
+			top: 0;
+			right: 0;
+		}
 	}
 }
 .bottom-block {
@@ -209,6 +277,38 @@ body {
 	&__controls {
 		// position: relative;
 		flex: 0 0 calc(376 / 1170 * 100%);
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		@media (max-width: ($md3+px)) {
+			display: none;
+		}
+	}
+}
+.controls-block {
+	// .controls-block__arrows
+	&__arrows {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		column-gap: 40px;
+		align-items: center;
+	}
+	// .controls-block__arrow
+	&__arrow {
+		&::before {
+			@include adaptiv-value("font-size", 30, 15, 1);
+			color: #fff;
+		}
+		// .controls-block__arrow_prev
+		&_prev {
+			&::before {
+				transform: rotate(-180deg);
+			}
+		}
+		// .controls-block__arrow_next
+		&_next {
+		}
 	}
 }
 .vendors {
@@ -217,8 +317,11 @@ body {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: flex-start;
-		@include adaptiv-value("column-gap", 45, 10, 1);
-		@include adaptiv-value("row-gap", 10, 3, 1);
+		@include adaptiv-value("column-gap", 45, 15, 1);
+		@include adaptiv-value("row-gap", 10, 5, 1);
+		@media (max-width: ($md3+px)) {
+			justify-content: space-between;
+		}
 	}
 	// .vendors__item
 	&__item {
@@ -231,8 +334,129 @@ body {
 		}
 	}
 }
+//</MAIN-BLOCK>=================================
 
-//=================================
+//<HOW>=================================
+.how {
+	// .how__container
+	&__container {
+	}
+	// .how__title
+	&__title {
+		text-align: center;
+		@include adaptiv-value("margin-bottom", 70, 30, 1);
+	}
+	// .how__body
+	&__body {
+	}
+	// .how__columns
+	&__columns {
+		display: grid;
+		grid-template-columns:
+			minmax(230px, 1fr) minmax(30px, 160px) minmax(230px, 1fr) minmax(30px, 160px)
+			minmax(230px, 1fr);
+		// grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+		// @include adaptiv-value("column-gap", 160, 0, 1);
+		@include adaptiv-value("row-gap", 20, 10, 1);
+	}
+}
+.columns-how {
+	// .columns-how__item
+	&__item {
+		min-height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	// .columns-how__icon
+	&__icon {
+		flex: 1 1 auto;
+		&:not(:last-child) {
+			@include adaptiv-value("margin-bottom", 50, 25, 1);
+		}
+	}
+	// .columns-how__line
+	&__line {
+		@include adaptiv-value("width", 250, 0, 1);
+
+		// width: 150%;
+		// .columns-how__line_left
+		&_left {
+			background-image: linear-gradient(90deg, transparent, transparent 50%, #fff 50%, #fff 100%),
+				linear-gradient(90deg, #9672ff, #4de0fd);
+		}
+		// .columns-how__line_right
+		&_right {
+			background-image: linear-gradient(90deg, transparent, transparent 50%, #fff 50%, #fff 100%),
+				linear-gradient(90deg, #4de0fd, #f2b8ec);
+			&::before {
+				background-color: #4de0fd;
+			}
+			&::after {
+				background-color: #f2b8ec;
+			}
+		}
+		@media (max-width: ($md3+px)) {
+			// width: 200%;
+		}
+	}
+	// .columns-how__frame
+	&__frame {
+		width: 90px;
+		height: 90px;
+		background-color: #9672ff;
+		border-radius: 20px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 20px;
+		background: #4ddffd;
+		&::before {
+			font-size: 25px;
+			color: #fff;
+		}
+		// .columns-how__frame_blue
+		&_blue {
+			background-color: #4ddffd;
+			box-shadow:
+				0px 100px 80px 0px rgba(77, 223, 253, 0.07),
+				0px 64.815px 46.852px 0px rgba(77, 223, 253, 0.05),
+				0px 38.519px 25.481px 0px rgba(77, 223, 253, 0.04),
+				0px 20px 13px 0px rgba(77, 223, 253, 0.04),
+				0px 8.148px 6.519px 0px rgba(77, 223, 253, 0.03),
+				0px 1.852px 3.148px 0px rgba(77, 223, 253, 0.02);
+		}
+		// .columns-how__frame_purple
+		&_purple {
+			box-shadow:
+				0px 100px 80px 0px rgba(150, 114, 255, 0.07),
+				0px 64.815px 46.852px 0px rgba(150, 114, 255, 0.05),
+				0px 38.519px 25.481px 0px rgba(150, 114, 255, 0.04),
+				0px 20px 13px 0px rgba(150, 114, 255, 0.04),
+				0px 8.148px 6.519px 0px rgba(150, 114, 255, 0.03),
+				0px 1.852px 3.148px 0px rgba(150, 114, 255, 0.02);
+		}
+		// .columns-how__frame_pink
+		&_pink {
+			background-color: #f2b8ec;
+			box-shadow:
+				0px 100px 80px 0px rgba(242, 184, 236, 0.07),
+				0px 64.815px 46.852px 0px rgba(242, 184, 236, 0.05),
+				0px 38.519px 25.481px 0px rgba(242, 184, 236, 0.04),
+				0px 20px 13px 0px rgba(242, 184, 236, 0.04),
+				0px 8.148px 6.519px 0px rgba(242, 184, 236, 0.03),
+				0px 1.852px 3.148px 0px rgba(242, 184, 236, 0.02);
+		}
+	}
+	// .columns-how__body
+	&__body {
+		text-align: center;
+		h2 {
+			@include adaptiv-value("font-size", 22, 20, 1);
+		}
+	}
+}
+//</HOW>=================================
 
 //<ХЛЕБНЫЕ КРОШКИ>=================================
 /* .breadcrumbs {
