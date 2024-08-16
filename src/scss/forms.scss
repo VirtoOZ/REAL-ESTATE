@@ -95,43 +95,16 @@
 
 //<BUTTON (a.btn+tab)>=======================================
 .btn {
-	display: inline-flex;
-	padding: 0px 15px;
-	justify-content: center;
-	align-items: center;
-	// min-height: 48px;
-	// object-fit: contain;
-	// background-color: #f68038;
-	// color: #fff;
-	// transition: all 0.3s ease 0s;
-	// text-transform: uppercase;
-	// font-weight: 900;
-	// font-size: 12px;
-	// line-height: 18px;
-
-	// 	// .btn_gray
-	// 	&_gray {
-	// 		background-color: #e6e6e6;
-	// 		color: #666;
-	// 		@media (min-width: ($md2+px)) {
-	// 			&:hover {
-	// 				background-color: #a1a1a1;
-	// 			}
-	// 		}
-	// 	}
-	// 	&._fw {
-	// 		width: 100%;
-	// 	}
-	// &_white {
-	// 	color: $orangeColor;
-	// 	background-color: #fff;
-	// 	@media (any-hover: hover) {
-	// 		&:hover {
-	// 			background-color: $orangeColor;
-	// 			color: #fff;
-	// 		}
-	// 	}
-	// }
+	background-color: $orangeColor;
+	@include adaptiv-value("padding-left", 40, 15, 1);
+	@include adaptiv-value("padding-right", 40, 15, 1);
+	color: #fff;
+	@include adaptiv-value("font-size", 17, 14, 1);
+	font-weight: 700;
+	letter-spacing: 0.012rem;
+	@media (max-width: ($md3+px)) {
+		width: 100%;
+	}
 }
 //</BUTTON()>=======================================
 

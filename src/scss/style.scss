@@ -95,10 +95,15 @@ body {
 	flex: 1 1 auto;
 	// .page__main-block
 	&__main-block {
-		@include adaptiv-value("margin-bottom", 230, 50, 1);
+		@include adaptiv-value("margin-bottom", 230, 60, 1);
 	}
 	// .page__how
 	&__how {
+		@include adaptiv-value("margin-bottom", 224, 60, 1);
+	}
+	// .page__deals
+	&__deals {
+		@include adaptiv-value("margin-bottom", 243, 60, 1);
 	}
 }
 //<MAIN-BLOCK>=================================
@@ -235,18 +240,6 @@ body {
 	// .form-content__button
 	&__button {
 		@include adaptiv-value("min-height", 86, 43, 1);
-		background-color: $orangeColor;
-		// @include adaptiv-value("padding-top", 30, 15, 1);
-		// @include adaptiv-value("padding-bottom", 30, 15, 1);
-		@include adaptiv-value("padding-left", 40, 15, 1);
-		@include adaptiv-value("padding-right", 40, 15, 1);
-		color: #fff;
-		font-size: 17px;
-		font-weight: 700;
-		letter-spacing: 0.012rem;
-		@media (max-width: ($md3+px)) {
-			width: 100%;
-		}
 		@media (min-width: ($md3+px)) {
 			transform: translate(100%, 0px);
 			position: absolute;
@@ -352,12 +345,15 @@ body {
 	// .how__columns
 	&__columns {
 		display: grid;
-		grid-template-columns:
-			minmax(230px, 1fr) minmax(30px, 160px) minmax(230px, 1fr) minmax(30px, 160px)
-			minmax(230px, 1fr);
-		// grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-		// @include adaptiv-value("column-gap", 160, 0, 1);
-		@include adaptiv-value("row-gap", 20, 10, 1);
+		grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+		@include adaptiv-value("row-gap", 45, 30, 1);
+		@include adaptiv-value("column-gap", 160, 0, 1);
+		@media (min-width: ($md3+px)) {
+		}
+		@media (max-width: ($md3+px)) {
+			grid-template-columns: repeat(auto-fill, minmax(auto, 260px));
+			justify-content: center;
+		}
 	}
 }
 .columns-how {
@@ -367,6 +363,18 @@ body {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		// grid-area: item;
+		&_line {
+			// grid-area: line;
+		}
+		@media (max-width: ($md3+px)) {
+			justify-items: center;
+		}
+		@media (min-width: ($md2+px)) {
+			&:last-child .columns-how__line {
+				display: none;
+			}
+		}
 	}
 	// .columns-how__icon
 	&__icon {
@@ -377,9 +385,11 @@ body {
 	}
 	// .columns-how__line
 	&__line {
-		@include adaptiv-value("width", 250, 0, 1);
-
-		// width: 150%;
+		position: relative;
+		@include adaptiv-value("width", 210, 0, 1);
+		@media (max-width: ($md2+px)) {
+			display: none;
+		}
 		// .columns-how__line_left
 		&_left {
 			background-image: linear-gradient(90deg, transparent, transparent 50%, #fff 50%, #fff 100%),
@@ -404,16 +414,25 @@ body {
 	&__frame {
 		width: 90px;
 		height: 90px;
-		background-color: #9672ff;
 		border-radius: 20px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		border-radius: 20px;
-		background: #4ddffd;
 		&::before {
 			font-size: 25px;
 			color: #fff;
+		}
+		// .columns-how__frame_purple
+		&_purple {
+			background-color: #9672ff;
+			box-shadow:
+				0px 100px 80px 0px rgba(150, 114, 255, 0.07),
+				0px 64.815px 46.852px 0px rgba(150, 114, 255, 0.05),
+				0px 38.519px 25.481px 0px rgba(150, 114, 255, 0.04),
+				0px 20px 13px 0px rgba(150, 114, 255, 0.04),
+				0px 8.148px 6.519px 0px rgba(150, 114, 255, 0.03),
+				0px 1.852px 3.148px 0px rgba(150, 114, 255, 0.02);
 		}
 		// .columns-how__frame_blue
 		&_blue {
@@ -425,16 +444,6 @@ body {
 				0px 20px 13px 0px rgba(77, 223, 253, 0.04),
 				0px 8.148px 6.519px 0px rgba(77, 223, 253, 0.03),
 				0px 1.852px 3.148px 0px rgba(77, 223, 253, 0.02);
-		}
-		// .columns-how__frame_purple
-		&_purple {
-			box-shadow:
-				0px 100px 80px 0px rgba(150, 114, 255, 0.07),
-				0px 64.815px 46.852px 0px rgba(150, 114, 255, 0.05),
-				0px 38.519px 25.481px 0px rgba(150, 114, 255, 0.04),
-				0px 20px 13px 0px rgba(150, 114, 255, 0.04),
-				0px 8.148px 6.519px 0px rgba(150, 114, 255, 0.03),
-				0px 1.852px 3.148px 0px rgba(150, 114, 255, 0.02);
 		}
 		// .columns-how__frame_pink
 		&_pink {
@@ -457,6 +466,97 @@ body {
 	}
 }
 //</HOW>=================================
+
+//<DEALS>=================================
+.deals {
+	// .deals__container
+	&__container {
+	}
+	// .deals__title
+	&__title {
+		@include adaptiv-value("margin-bottom", 50, 20, 1);
+		@media (min-width: ($md3+px)) {
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+	// .deals__buttom
+	&__button {
+		align-self: flex-start;
+		border-radius: 5px;
+		@include adaptiv-value("min-height", 65, 45, 1);
+		display: flex;
+		font-weight: 500;
+		justify-content: center;
+		align-items: center;
+	}
+	// .deals__menu
+	&__menu {
+	}
+	// .deals__columns
+	&__columns {
+	}
+	// .deals__item
+	&__item {
+	}
+	// .deals__labels
+	&__labels {
+	}
+	// .deals__label
+	&__label {
+		// .deals__label_futured
+		&_futured {
+		}
+		// .deals__label_3d
+		&_3d {
+		}
+	}
+	// .deals__image
+	&__image {
+	}
+}
+.title-deals {
+	// .title-deals__title
+	&__title {
+		flex: 0 0 470px;
+		@media (max-width: ($md3+px)) {
+			// margin: 0px 0px 20px 0px;
+			margin: 0px 0px calc(30px / 40px * 1em) 0px;
+		}
+	}
+}
+.menu-deals {
+	// .menu-deals__list
+	&__list {
+		display: grid;
+		grid-template: 1fr / repeat(auto-fit, auto);
+		// grid-auto-columns: auto;
+		grid-auto-flow: column;
+		justify-content: start;
+		@include adaptiv-value("column-gap", 50, 10, 1);
+		row-gap: 5px;
+	}
+	// .menu-deals__item
+	&__item {
+	}
+	// .menu-deals__link
+	&__link {
+		color: #000;
+		font-size: 19px;
+		font-weight: 400;
+		text-decoration: none;
+		transition:
+			color 0.3s ease 0s,
+			text-decoration 0.3s ease 0s;
+		@media (any-hover: hover) {
+			&:hover {
+				color: $orangeColor;
+				text-decoration: underline;
+			}
+		}
+	}
+}
+//</DEALS>=================================
 
 //<ХЛЕБНЫЕ КРОШКИ>=================================
 /* .breadcrumbs {
