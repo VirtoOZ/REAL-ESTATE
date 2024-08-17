@@ -37,7 +37,7 @@ export function ibg() {
 		// }
 	}
 }
-ibg();
+// ibg();
 
 let ua = window.navigator.userAgent;
 let msie = ua.indexOf("MSIE ");
