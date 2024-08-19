@@ -14,7 +14,10 @@
 	border: none;
 	position: absolute;
 	top: 20%;
-	transform: translate(100%, 0px);
+	transform: translate(105%, 0px);
+	@media (max-width: ($md2+px)) {
+		transform: translate(118%, 0px);
+	}
 	// .columns-how__line_purple-blue
 	&_purple-blue {
 		background-image: linear-gradient(90deg, transparent, transparent 50%, #fff 50%, #fff 100%),
@@ -158,13 +161,13 @@
 	// .title-box__title
 	&__title {
 		color: #000;
-		@include adaptiv-value("font-size", 40, 28, 1);
+		@include adaptiv-value("font-size", 40, 30, 1);
 		font-weight: 800;
 		line-height: 135%;
 	}
 	// .title-box__text
 	&__text {
-		@include adaptiv-value("font-size", 17, 12, 1);
+		@include adaptiv-value("font-size", 17, 13, 1);
 		letter-spacing: 0.012rem;
 	}
 }
