@@ -111,6 +111,11 @@ body {
 	}
 	// .page__reviews
 	&__reviews {
+		@include adaptiv-value("margin-bottom", 150, 40, 1);
+	}
+	// .page__subscribe
+	&__subscribe {
+		@include adaptiv-value("padding-bottom", 160, 40, 1);
 	}
 }
 //<MAIN-BLOCK>=================================
@@ -785,7 +790,8 @@ body {
 	&__item {
 		display: grid;
 		grid-auto-flow: row;
-		grid-template: auto 1fr minmax(48px, 1fr) / 1fr;
+		grid-template: auto 1fr minmax(48px, auto) / 1fr;
+		row-gap: 33px;
 	}
 	// .reviews__bottom
 	&__bottom {
@@ -830,11 +836,26 @@ body {
 .item-reviews {
 	border-radius: 10px;
 	border: 1px solid #ebebeb;
-	background: #fff;
+	background-color: #fff;
+	transition: all 0.3s ease 0s;
 	@include adaptiv-value("padding-top", 50, 10, 1);
 	@include adaptiv-value("padding-bottom", 50, 10, 1);
 	@include adaptiv-value("padding-left", 38, 10, 1);
 	@include adaptiv-value("padding-right", 38, 10, 1);
+	@media (any-hover: hover) {
+		&:hover {
+			border: 1px solid #fff;
+			border-radius: 10px;
+			box-shadow:
+				0px 100px 80px 0px rgba(0, 0, 0, 0.03),
+				0px 64.815px 46.852px 0px rgba(0, 0, 0, 0.02),
+				0px 38.519px 25.481px 0px rgba(0, 0, 0, 0.02),
+				0px 20px 13px 0px rgba(0, 0, 0, 0.01),
+				0px 8.148px 6.519px 0px rgba(0, 0, 0, 0.01),
+				0px 1.852px 3.148px 0px rgba(0, 0, 0, 0.01),
+				3px 44px 54px 0px rgba(0, 0, 0, 0.08);
+		}
+	}
 	// .item-reviews__raiting
 	&__raiting {
 	}
@@ -869,6 +890,90 @@ body {
 	}
 }
 //</REVIEWS>=================================
+
+//<SUBSCRIBE>=================================
+.subscribe {
+	background-color: #fbfcfc;
+	@include adaptiv-value("padding-top", 160, 40, 1);
+	// .subscribe__container
+	&__container {
+	}
+	// .subscribe__header
+	&__header {
+		text-align: center;
+		:last-child {
+			@include adaptiv-value("margin-bottom", 34, 15, 1);
+		}
+		> *:not(:last-child) {
+			margin: 0px 0px calc(11px / 45px * 1em) 0px;
+		}
+	}
+	// .subscribe__title
+	&__title {
+	}
+	// .subscribe__subtitle
+	&__subtitle {
+		color: var(--TEXT, #31353b);
+		font-family: Manrope;
+		font-size: 23px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 144.2%; /* 33.166px */
+		letter-spacing: 0.46px;
+	}
+	// .subscribe__form
+	&__form {
+		background-color: #fff;
+		margin: 0px auto;
+		max-width: 686px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+.form-subscribe {
+	box-shadow:
+		0px 163px 80px 0px rgba(0, 0, 0, 0.04),
+		0px 105.648px 46.852px 0px rgba(0, 0, 0, 0.03),
+		0px 62.785px 25.481px 0px rgba(0, 0, 0, 0.02),
+		0px 32.6px 13px 0px rgba(0, 0, 0, 0.02),
+		0px 13.281px 6.519px 0px rgba(0, 0, 0, 0.02),
+		0px 3.019px 3.148px 0px rgba(0, 0, 0, 0.01);
+	@include adaptiv-value("padding", 30, 15, 1);
+	// .form-subscribe__content
+	&__content {
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 auto;
+	}
+	// .form-subscribe__label
+	&__label {
+		color: $grayColor;
+		font-size: 17px;
+		font-weight: 500;
+		line-height: 144.2%; /* 24.514px */
+		letter-spacing: 0.024rem;
+		&:not(:last-child) {
+			margin: 0px 0px calc(11px / 17px * 1em) 0px;
+		}
+	}
+	// .form-subscribe__input
+	&__input {
+		color: $darkGrayColor;
+		@include adaptiv-value("font-size", 20, 16, 1);
+		font-weight: 700;
+		line-height: 144.2%; /* 28.84px */
+		letter-spacing: 0.029rem;
+	}
+	// .form-subscribe__button
+	&__button {
+	}
+}
+//</SUBSCRIBE>=================================
+
+//<>=================================
+
+//</>=================================
 
 //<ХЛЕБНЫЕ КРОШКИ>=================================
 /* .breadcrumbs {
