@@ -109,6 +109,9 @@ body {
 	&__featured {
 		@include adaptiv-value("margin-bottom", 150, 40, 1);
 	}
+	// .page__reviews
+	&__reviews {
+	}
 }
 //<MAIN-BLOCK>=================================
 .main-block {
@@ -512,7 +515,7 @@ body {
 	&__columns {
 		display: none;
 		@include adaptiv-value("gap", 30, 10, 1);
-		@media (min-width: ($md5+px)) {
+		@media (min-width: ($md4+px)) {
 			grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
 		}
 		&._active {
@@ -600,7 +603,7 @@ body {
 		justify-content: start;
 		row-gap: 5px;
 		@include adaptiv-value("column-gap", 50, 0, 1);
-		@include adaptiv-value("row-gap", 15, 5, 1);
+		@include adaptiv-value("row-gap", 15, 10, 1);
 		@media (max-width: ($md3+px)) {
 			grid-template-columns: repeat(2, auto);
 		}
@@ -631,6 +634,7 @@ body {
 		@include adaptiv-value("font-size", 19, 16, 1);
 		font-weight: 400;
 		line-height: 150%;
+		transition: color 0.4s ease 0s;
 		&::after {
 			content: "";
 			position: absolute;
@@ -754,6 +758,117 @@ body {
 	}
 }
 //</FEATURED>=================================
+
+//<REVIEWS>=================================
+.reviews {
+	// .reviews__container
+	&__container {
+	}
+	// .reviews__title
+	&__title {
+		max-width: 570px;
+		font-weight: 600;
+		&:not(:last-child) {
+			margin: 0px 0px calc(50px / 40px * 1em) 0px;
+		}
+	}
+	// .reviews__columns
+	&__columns {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		grid-auto-rows: 1fr;
+		@include adaptiv-value("column-gap", 30, 10, 1);
+		@include adaptiv-value("row-gap", 30, 10, 1);
+		@include adaptiv-value("margin-bottom", 85, 30, 1);
+	}
+	// .reviews__item
+	&__item {
+		display: grid;
+		grid-auto-flow: row;
+		grid-template: auto 1fr minmax(48px, 1fr) / 1fr;
+	}
+	// .reviews__bottom
+	&__bottom {
+		@media (max-width: ($md3+px)) {
+			text-align: center;
+			> *:not(:last-child) {
+				margin: 0px 0px calc(15px / 16px * 1em) 0px;
+			}
+		}
+		@media (min-width: ($md3+px)) {
+			display: flex;
+			align-items: center;
+		}
+	}
+	// .reviews__vendors
+	&__vendors {
+		@media (min-width: ($md3+px)) {
+			flex: 1 1 auto;
+			@include adaptiv-value("margin-right", 100, 10, 1);
+			@include adaptiv-value("margin-left", 35, 0, 1);
+		}
+
+		.vendors__link::before {
+			@include adaptiv-value("font-size", 26, 20, 1);
+		}
+	}
+	// .reviews__more-info
+	&__more-info {
+		flex: 0 0 360px;
+		font-weight: 400;
+		line-height: 150%;
+		a {
+			color: #2cbde7;
+			@media (any-hover: hover) {
+				&:hover {
+					text-decoration-line: underline;
+				}
+			}
+		}
+	}
+}
+.item-reviews {
+	border-radius: 10px;
+	border: 1px solid #ebebeb;
+	background: #fff;
+	@include adaptiv-value("padding-top", 50, 10, 1);
+	@include adaptiv-value("padding-bottom", 50, 10, 1);
+	@include adaptiv-value("padding-left", 38, 10, 1);
+	@include adaptiv-value("padding-right", 38, 10, 1);
+	// .item-reviews__raiting
+	&__raiting {
+	}
+	// .item-reviews__text
+	&__text {
+		line-height: 175%;
+	}
+	// .item-reviews__author
+	&__author {
+		display: flex;
+		align-items: center;
+		column-gap: 20px;
+	}
+	// .item-reviews__avatar
+	&__avatar {
+	}
+	// .item-reviews__body
+	&__body {
+		> *:not(:last-child) {
+			margin: 0px 0px calc(3px / 16px * 1em) 0px;
+		}
+	}
+	// .item-reviews__name
+	&__name {
+		font-weight: 700;
+	}
+	// .item-reviews__location
+	&__location {
+		color: #666;
+		font-size: 14px;
+		font-weight: 400;
+	}
+}
+//</REVIEWS>=================================
 
 //<ХЛЕБНЫЕ КРОШКИ>=================================
 /* .breadcrumbs {
