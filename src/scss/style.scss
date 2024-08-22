@@ -858,7 +858,8 @@ body {
 		}
 	}
 	// .item-reviews__raiting
-	&__raiting {
+	&__rating {
+		@include adaptiv-value("font-size", 40, 25, 1);
 	}
 	// .item-reviews__text
 	&__text {
