@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
-@@include('html/_head.html',{"title":"NAME"})
+@@include('html/_head.html',{"title":"REAL-ESTATE"})
 
 <body>
 	<div class="wrapper">
@@ -327,7 +327,21 @@
 					<h2 class="reviews__title title-box__title">Loved by businesses, and individuals across the globe.</h2>
 					<div class="reviews__columns">
 						<div class="reviews__item item-reviews">
-							<div class="item-reviews__raiting"></div>
+							<div class="item-reviews__raiting">
+								<div data-ajax="" class="rating rating_set">
+									<div class="rating__body">
+										<div class="rating__active"></div>
+										<div class="rating__items">
+											<input class="rating__item" type="radio" name="rating" value="1">
+											<input class="rating__item" type="radio" name="rating" value="2">
+											<input class="rating__item" type="radio" name="rating" value="3">
+											<input class="rating__item" type="radio" name="rating" value="4">
+											<input class="rating__item" type="radio" name="rating" value="5">
+										</div>
+									</div>
+									<div class="rating__value">5</div>
+								</div>
+							</div>
 							<div class="item-reviews__text">
 								<p>Moderate children at of outweigh it. Unsatiable it considered invitation he travelling insensible. Consulted admitting oh mr up as described.</p>
 							</div>
@@ -342,7 +356,21 @@
 							</div>
 						</div>
 						<div class="reviews__item item-reviews">
-							<div class="item-reviews__raiting"></div>
+							<div class="item-reviews__raiting">
+								<div data-ajax="" class="rating rating_set">
+									<div class="rating__body">
+										<div class="rating__active"></div>
+										<div class="rating__items">
+											<input class="rating__item" type="radio" name="rating" value="1">
+											<input class="rating__item" type="radio" name="rating" value="2">
+											<input class="rating__item" type="radio" name="rating" value="3">
+											<input class="rating__item" type="radio" name="rating" value="4">
+											<input class="rating__item" type="radio" name="rating" value="5">
+										</div>
+									</div>
+									<div class="rating__value">4.8</div>
+								</div>
+							</div>
 							<div class="item-reviews__text">
 								<p>The and collecting motionless difficulty son. His hearing staying ten colonel met. Sex drew six easy four dear cold</p>
 							</div>
@@ -357,7 +385,21 @@
 							</div>
 						</div>
 						<div class="reviews__item item-reviews">
-							<div class="item-reviews__raiting"></div>
+							<div class="item-reviews__raiting">
+								<div data-ajax="" class="rating rating_set">
+									<div class="rating__body">
+										<div class="rating__active"></div>
+										<div class="rating__items">
+											<input class="rating__item" type="radio" name="rating" value="1">
+											<input class="rating__item" type="radio" name="rating" value="2">
+											<input class="rating__item" type="radio" name="rating" value="3">
+											<input class="rating__item" type="radio" name="rating" value="4">
+											<input class="rating__item" type="radio" name="rating" value="5">
+										</div>
+									</div>
+									<div class="rating__value">4.5</div>
+								</div>
+							</div>
 							<div class="item-reviews__text">
 								<p>Sociable on as carriage my position weddings raillery consider. Peculiar trifling absolute and wandered vicinity property yet.</p>
 							</div>
@@ -397,7 +439,7 @@
 					<form action="#" class="subscribe__form form-subscribe">
 						<div class="form-subscribe__content">
 							<label for="input-1" class="form-subscribe__label">Type your Email Address</label>
-							<input autocomplete="off" type="email" name="form[]" class="form-subscribe__input">
+							<input autocomplete="off" type="email" id="input-1" name="form[]" class="form-subscribe__input">
 						</div>
 						<button type="submit" class="form-subscribe__button btn">Send Now</button>
 					</form>

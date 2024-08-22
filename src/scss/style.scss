@@ -84,6 +84,7 @@ body {
 //<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>=================================
 //@import "datepicker";
 // @import "../scss/libs/gallery/lightgallery";
+@import "stars-rating";
 // @import "popup";
 @import "header";
 @import "footer";
@@ -780,7 +781,7 @@ body {
 	// .reviews__columns
 	&__columns {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
 		grid-auto-rows: 1fr;
 		@include adaptiv-value("column-gap", 30, 10, 1);
 		@include adaptiv-value("row-gap", 30, 10, 1);
@@ -926,9 +927,11 @@ body {
 		background-color: #fff;
 		margin: 0px auto;
 		max-width: 686px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		@media (min-width: ($md5+px)) {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 	}
 }
 .form-subscribe {
@@ -945,6 +948,9 @@ body {
 		display: flex;
 		flex-direction: column;
 		flex: 1 1 auto;
+		@media (max-width: ($md5+px)) {
+			margin: 0px 0px calc(11px / 16px * 1em) 0px;
+		}
 	}
 	// .form-subscribe__label
 	&__label {
@@ -967,6 +973,9 @@ body {
 	}
 	// .form-subscribe__button
 	&__button {
+		@media (max-width: ($md5+px)) {
+			width: 100%;
+		}
 	}
 }
 //</SUBSCRIBE>=================================

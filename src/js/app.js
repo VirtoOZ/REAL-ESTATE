@@ -12,4 +12,5 @@ import './files/sliders.js';
 import './files/forms.js';
 // import './files/popup.js';
 // import './files/gallery.js';
+import './files/stars-rating.js';
 //=================================
