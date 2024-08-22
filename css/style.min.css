@@ -2382,11 +2382,12 @@ ol.counter li::before {
   }
 }
 .item-reviews__rating {
-  font-size: 40px;
+  font-size: 35px;
+  color: #718087;
 }
 @media (max-width: 1200px) {
   .item-reviews__rating {
-    font-size: calc(25px + 15 * ((100vw - 320px) / 880));
+    font-size: calc(25px + 10 * ((100vw - 320px) / 880));
   }
 }
 .item-reviews__text {
