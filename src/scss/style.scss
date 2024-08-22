@@ -859,7 +859,8 @@ body {
 	}
 	// .item-reviews__raiting
 	&__rating {
-		@include adaptiv-value("font-size", 40, 25, 1);
+		@include adaptiv-value("font-size", 35, 25, 1);
+		color: $grayColor;
 	}
 	// .item-reviews__text
 	&__text {
