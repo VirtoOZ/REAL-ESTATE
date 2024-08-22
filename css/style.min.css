@@ -1269,14 +1269,8 @@ ol.counter li::before {
   display: flex;
   align-items: flex-end;
   font-size: 40px;
-  font-size: 40px;
   line-height: 75%;
   transition: opacity 0.3s ease 0s;
-}
-@media (max-width: 1200px) {
-  .rating {
-    font-size: calc(25px + 15 * ((100vw - 320px) / 880));
-  }
 }
 .rating__body {
   position: relative;
@@ -2385,6 +2379,14 @@ ol.counter li::before {
     border: 1px solid #fff;
     border-radius: 10px;
     box-shadow: 0px 100px 80px 0px rgba(0, 0, 0, 0.03), 0px 64.815px 46.852px 0px rgba(0, 0, 0, 0.02), 0px 38.519px 25.481px 0px rgba(0, 0, 0, 0.02), 0px 20px 13px 0px rgba(0, 0, 0, 0.01), 0px 8.148px 6.519px 0px rgba(0, 0, 0, 0.01), 0px 1.852px 3.148px 0px rgba(0, 0, 0, 0.01), 3px 44px 54px 0px rgba(0, 0, 0, 0.08);
+  }
+}
+.item-reviews__rating {
+  font-size: 40px;
+}
+@media (max-width: 1200px) {
+  .item-reviews__rating {
+    font-size: calc(25px + 15 * ((100vw - 320px) / 880));
   }
 }
 .item-reviews__text {
