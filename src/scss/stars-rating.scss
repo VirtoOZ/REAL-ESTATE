@@ -84,6 +84,7 @@
 .rating {
 	display: flex;
 	align-items: flex-end;
+	@include adaptiv-value("font-size", 40, 25, 1);
 	font-size: 40px;
 	line-height: 75%;
 	transition: opacity 0.3s ease 0s;

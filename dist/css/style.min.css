@@ -1269,8 +1269,14 @@ ol.counter li::before {
   display: flex;
   align-items: flex-end;
   font-size: 40px;
+  font-size: 40px;
   line-height: 75%;
   transition: opacity 0.3s ease 0s;
+}
+@media (max-width: 1200px) {
+  .rating {
+    font-size: calc(25px + 15 * ((100vw - 320px) / 880));
+  }
 }
 .rating__body {
   position: relative;
