@@ -308,9 +308,17 @@ body {
 	}
 	// .controls-block__arrow
 	&__arrow {
+		color: #fff;
 		&::before {
 			@include adaptiv-value("font-size", 30, 15, 1);
-			color: #fff;
+		}
+		&_prev,
+		&_next {
+			@media (any-hover: hover) {
+				&:hover {
+					color: red;
+				}
+			}
 		}
 		// .controls-block__arrow_prev
 		&_prev {
@@ -340,10 +348,16 @@ body {
 	}
 	// .vendors__item
 	&__item {
+		@media (any-hover: hover) {
+			&:hover .vendors__link {
+				color: red;
+			}
+		}
 	}
 	// .vendors__link
 	&__link {
 		color: $grayColor;
+		transition: color 0.3s ease 0s;
 		&::before {
 			@include adaptiv-value("font-size", 23, 20, 1);
 		}
@@ -385,22 +399,51 @@ body {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		// grid-area: item;
-		&_line {
-			// grid-area: line;
+		&:nth-child(3) .columns-how__line,
+		&:last-child .columns-how__line {
+			display: none;
 		}
 		@media (max-width: ($md3+px)) {
 			justify-items: center;
 		}
-		@media (min-width: ($md2+px)) {
-			&:last-child .columns-how__line {
-				display: none;
+		@media (any-hover: hover) {
+			&:hover {
+				.columns-how__line::after,
+				.columns-how__line::before {
+					transform: translate(0, -50%) scale(1.3);
+					animation: pulse 1.2s linear infinite;
+					/* ключевые кадры */
+					@keyframes pulse {
+						0% {
+							// opacity: 1;
+							// visibility: visible;
+							transform: translate(0, -50%) scale(1);
+						}
+						50% {
+							// opacity: 0;
+							// visibility: hidden;
+							transform: translate(0, -50%) scale(1.7);
+						}
+						100% {
+							// opacity: 0;
+							// visibility: hidden;
+							transform: translate(0, -50%) scale(1);
+						}
+					}
+				}
 			}
 		}
 	}
 	// .columns-how__icon
 	&__icon {
 		flex: 1 1 auto;
+		@media (any-hover: hover) {
+			&:hover {
+				.columns-how__frame::before {
+					transform: scale(1.3);
+				}
+			}
+		}
 		&:not(:last-child) {
 			@include adaptiv-value("margin-bottom", 50, 25, 1);
 		}
@@ -442,6 +485,7 @@ body {
 		align-items: center;
 		border-radius: 20px;
 		&::before {
+			transition: transform 0.3s ease 0s;
 			font-size: 25px;
 			color: #fff;
 		}
@@ -624,11 +668,11 @@ body {
 	&__item {
 		&._active {
 			.menu-deals__link {
-				color: #f85a47;
+				color: red;
 				&::after {
 					width: 100%;
 					height: 1%;
-					background-color: #f85a47;
+					background-color: red;
 				}
 			}
 		}
