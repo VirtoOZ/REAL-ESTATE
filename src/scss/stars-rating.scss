@@ -100,8 +100,6 @@
 		position: absolute;
 		width: 0%;
 		height: 100%;
-		display: flex;
-		// justify-content: flex-start;
 		top: 0;
 		left: 0;
 		overflow: hidden;
@@ -113,6 +111,7 @@
 			top: 0;
 			left: 0;
 			color: #ffd300;
+			display: flex;
 		}
 	}
 	// .rating__items
