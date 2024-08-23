@@ -1295,7 +1295,7 @@ ol.counter li::before {
   height: 100%;
   top: 0;
   left: 0;
-  color: #ffd300;
+  color: red;
   display: flex;
 }
 .rating__items {
