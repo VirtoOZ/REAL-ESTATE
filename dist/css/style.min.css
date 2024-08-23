@@ -1274,6 +1274,8 @@ ol.counter li::before {
   transition: opacity 0.3s ease 0s;
 }
 .rating__body {
+  display: flex;
+  align-items: center;
   position: relative;
 }
 .rating__body::before {
@@ -1283,21 +1285,19 @@ ol.counter li::before {
 .rating__active {
   position: absolute;
   width: 0%;
-  height: 120%;
-  top: 0;
+  height: 150%;
+  top: -25%;
   left: 0;
   overflow: hidden;
-  display: flex;
-  align-items: center;
+  color: #ffd300;
 }
 .rating__active::before {
   content: "★★★★★";
   position: absolute;
   width: 100%;
-  height: 120%;
-  top: 0;
+  height: 100%;
+  top: 16.5%;
   left: 0;
-  color: #ffd300;
 }
 .rating__items {
   display: flex;
