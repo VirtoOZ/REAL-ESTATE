@@ -69,6 +69,20 @@ if (iconMenu) {//Проверяем есть ли icon-menu
 };
 //</BURGER>=================================
 
+	//======================================================================
+	// работа c шабкой при скролле
+	let headerElement = document.querySelector('.header');
+	const callback = function (entries, observer) {
+		if (entries[0].isIntersecting) {
+			headerElement.classList.remove('_scroll');
+		} else {
+			headerElement.classList.add('_scroll');
+		}
+	};
+	const headerObserver = new IntersectionObserver(callback);
+	headerObserver.observe(headerElement);
+	//======================================================================
+	
 //<BURGER SIDE-MENU>=================================
 // let menuPageBurger = document.querySelector('.menu-page__burger');
 // let menuPageBody = document.querySelector('.menu-page__body');

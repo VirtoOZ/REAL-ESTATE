@@ -11,8 +11,12 @@
 		margin: 0px auto;
 		background-color: #dedfe1;
 		height: 1px;
-		width: calc(890 / 1170 * 100%);
+		width: 100%;
+		@media (min-width: ($md3+px)) {
+			width: calc(890 / 1170 * 100%);
+		}
 	}
+
 	// .footer__container
 	&__container {
 	}
@@ -24,7 +28,6 @@
 		grid-template: 1fr / minmax(auto, 140px) 1fr;
 		grid-auto-flow: column;
 		align-items: center;
-		// justify-content: space-between;
 	}
 	// .footer__logo
 	&__logo {
@@ -51,8 +54,6 @@
 		display: grid;
 		grid-template: auto/repeat(auto-fit, minmax(50px, auto));
 		justify-content: flex-end;
-		// grid-auto-columns: 1fr;
-		// grid-auto-flow: column;
 		@include adaptiv-value("column-gap", 46, 15, 1);
 		@include adaptiv-value("row-gap", 5, 3, 1);
 	}

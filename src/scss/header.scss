@@ -5,8 +5,78 @@
 	top: 0;
 	left: 0;
 	width: 100%;
+	&._scroll {
+		.header__logo {
+			color: rgba(0, 0, 0, 0.3);
+		}
+		.header__body-logo {
+			@media (any-hover: hover) {
+				&:hover {
+					color: red;
+				}
+			}
+		}
+
+		// .icon-menu {
+		// 	@media (any-hover: hover) {
+		// 		.icon-menu:hover {
+		// 			span {
+		// 				background-color: red;
+		// 			}
+		// 		}
+		// 	}
+		// }
+		.header__wrapper {
+			// .header__body-logo,
+			// .header__menu,
+			// .header__icon {
+			background-color: rgba(255, 255, 255, 0.5);
+			@media (any-hover: hover) {
+				&:hover {
+					background-color: rgba(255, 255, 255, 0.9);
+				}
+			}
+		}
+		.header__body {
+			min-height: 40px;
+			@media (any-hover: hover) {
+				&:hover {
+					min-height: 60px;
+				}
+			}
+			@media (min-width: ($md2+px)) {
+				min-height: 70px;
+			}
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				.header__logo {
+					color: inherit;
+				}
+				.icon-menu span {
+					background-color: rgba(0, 0, 0, 1);
+				}
+			}
+		}
+		.icon-menu {
+			span {
+				background-color: rgba(0, 0, 0, 0.3);
+			}
+			@media (any-hover: hover) {
+				&:hover span {
+					background-color: red;
+				}
+			}
+		}
+	}
 	// .header__wrapper
 	&__wrapper {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 50;
+		transition: background-color 0.3s ease 0s;
 	}
 	// .header__container
 	&__container {
@@ -16,7 +86,8 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		@include adaptiv-value("min-height", 103, 60, 1);
+		@include adaptiv-value("min-height", 104, 60, 1);
+		transition: min-height 0.3s ease 0s;
 		@media (max-width: ($md3+px)) {
 			justify-content: space-between;
 		}
@@ -135,7 +206,7 @@
 		}
 		@media (max-width: ($md4+px)) {
 			&:not(:last-child) {
-				margin: 0px 0px calc(20px / 16px * 1em) 0px;
+				margin: 0px 0px calc(30px / 16px * 1em) 0px;
 			}
 		}
 	}
