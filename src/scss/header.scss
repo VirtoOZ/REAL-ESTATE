@@ -6,6 +6,55 @@
 	left: 0;
 	width: 100%;
 	&._scroll {
+		@media (any-hover: hover) {
+			&:hover {
+				.header__logo {
+					color: inherit;
+				}
+				.icon-menu span {
+					background-color: rgba(0, 0, 0, 1);
+				}
+				.menu__link {
+					color: rgba(0, 0, 0, 1);
+				}
+			}
+		}
+		.header__body {
+			&._active {
+				& {
+					min-height: 60px;
+					@media (min-width: ($md2+px)) {
+						min-height: 70px;
+					}
+				}
+				.icon-menu {
+					span {
+						background-color: rgba(0, 0, 0, 1);
+					}
+					@media (any-hover: hover) {
+						&:hover span {
+							background-color: red;
+						}
+					}
+				}
+				.header__wrapper {
+					background-color: rgba(255, 255, 255, 1);
+				}
+				.header__logo {
+					@media (any-hover: hover) {
+						&:hover {
+							color: red;
+						}
+					}
+				}
+				.header__logo {
+					color: rgba(0, 0, 0, 1);
+				}
+				.menu__link {
+					color: rgba(0, 0, 0, 1);
+				}
+			}
+		}
 		.header__logo {
 			color: rgba(0, 0, 0, 0.3);
 		}
@@ -16,20 +65,29 @@
 				}
 			}
 		}
-
-		// .icon-menu {
-		// 	@media (any-hover: hover) {
-		// 		.icon-menu:hover {
-		// 			span {
-		// 				background-color: red;
-		// 			}
-		// 		}
-		// 	}
-		// }
+		.icon-menu {
+			span {
+				background-color: rgba(0, 0, 0, 0.3);
+			}
+			@media (any-hover: hover) {
+				&:hover span {
+					background-color: red;
+				}
+			}
+		}
+		.menu__item {
+			@media (any-hover: hover) {
+				&:hover {
+					.menu__link {
+						color: red;
+					}
+				}
+			}
+		}
+		.menu__link {
+			color: rgba(0, 0, 0, 0.3);
+		}
 		.header__wrapper {
-			// .header__body-logo,
-			// .header__menu,
-			// .header__icon {
 			background-color: rgba(255, 255, 255, 0.5);
 			@media (any-hover: hover) {
 				&:hover {
@@ -45,27 +103,7 @@
 				}
 			}
 			@media (min-width: ($md2+px)) {
-				min-height: 70px;
-			}
-		}
-		@media (any-hover: hover) {
-			&:hover {
-				.header__logo {
-					color: inherit;
-				}
-				.icon-menu span {
-					background-color: rgba(0, 0, 0, 1);
-				}
-			}
-		}
-		.icon-menu {
-			span {
-				background-color: rgba(0, 0, 0, 0.3);
-			}
-			@media (any-hover: hover) {
-				&:hover span {
-					background-color: red;
-				}
+				// min-height: 70px;
 			}
 		}
 	}
