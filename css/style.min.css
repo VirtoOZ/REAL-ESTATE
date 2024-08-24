@@ -1329,6 +1329,47 @@ ol.counter li::before {
   left: 0;
   width: 100%;
 }
+@media (any-hover: hover) {
+  .header._scroll:hover .header__logo {
+    color: inherit;
+  }
+  .header._scroll:hover .icon-menu span {
+    background-color: black;
+  }
+  .header._scroll:hover .menu__link {
+    color: black;
+  }
+}
+.header._scroll .header__body._active {
+  min-height: 60px;
+}
+@media (min-width: 991.98px) {
+  .header._scroll .header__body._active {
+    min-height: 70px;
+  }
+}
+.header._scroll .header__body._active .icon-menu span {
+  background-color: black;
+}
+@media (any-hover: hover) {
+  .header._scroll .header__body._active .icon-menu:hover span {
+    background-color: red;
+  }
+}
+.header._scroll .header__body._active .header__wrapper {
+  background-color: white;
+}
+@media (any-hover: hover) {
+  .header._scroll .header__body._active .header__logo:hover {
+    color: red;
+  }
+}
+.header._scroll .header__body._active .header__logo {
+  color: black;
+}
+.header._scroll .header__body._active .menu__link {
+  color: black;
+}
 .header._scroll .header__logo {
   color: rgba(0, 0, 0, 0.3);
 }
@@ -1336,6 +1377,22 @@ ol.counter li::before {
   .header._scroll .header__body-logo:hover {
     color: red;
   }
+}
+.header._scroll .icon-menu span {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+@media (any-hover: hover) {
+  .header._scroll .icon-menu:hover span {
+    background-color: red;
+  }
+}
+@media (any-hover: hover) {
+  .header._scroll .menu__item:hover .menu__link {
+    color: red;
+  }
+}
+.header._scroll .menu__link {
+  color: rgba(0, 0, 0, 0.3);
 }
 .header._scroll .header__wrapper {
   background-color: rgba(255, 255, 255, 0.5);
@@ -1351,27 +1408,6 @@ ol.counter li::before {
 @media (any-hover: hover) {
   .header._scroll .header__body:hover {
     min-height: 60px;
-  }
-}
-@media (min-width: 991.98px) {
-  .header._scroll .header__body {
-    min-height: 70px;
-  }
-}
-@media (any-hover: hover) {
-  .header._scroll:hover .header__logo {
-    color: inherit;
-  }
-  .header._scroll:hover .icon-menu span {
-    background-color: black;
-  }
-}
-.header._scroll .icon-menu span {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-@media (any-hover: hover) {
-  .header._scroll .icon-menu:hover span {
-    background-color: red;
   }
 }
 .header__wrapper {
