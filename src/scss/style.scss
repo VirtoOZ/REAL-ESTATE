@@ -1,0 +1,1092 @@
+// <IMPORT>=================================
+@use "sass:math"; //модуль Math
+// Подключение главного файла миксина в глобальную область видимости
+//<MIXINS>=================================
+@import "base/mixins";
+//</MIXINS>=================================
+
+// <ШРИФТ>=================================
+//&display=swap - добавить при подключении через плагин
+// @import url(https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap);
+@import "fonts/fonts"; // Подключить если есть локальные файлы шрифтов
+@import "fonts/icons"; // Подключить если есть файл иконочного шрифта
+// </ШРИФТ></IMPORT>=================================
+
+// <VARIABLES>=================================
+$fontFamily: "Manrope";
+$fontSize: rem(16); // где 14(px) - размер шрифта по умолчанию из макета
+// Основные цвета
+$mainColor: #5e6282;
+$mainTextColor: #333333;
+$orangeColor: #f85a47;
+$grayColor: #718087;
+$darkGrayColor: #31353b;
+$hoverCololr: #4737ff;
+$mainBgColor: #fafafa; //приглушить цвет для комфорта глаз
+
+// Настройки адаптивной сетки
+$minWidth: 320; // Минимальная ширина страницы
+$maxWidth: 1440; // Ширина полотна (макета)
+$maxWidthContainer: 1200; // Ширина ограничивающего контейнера (0 = нет ограничения)
+// Общий отступ у контейнера
+$containerPadding: 30; // (30 = по 15px слева и справа, 0 = нет отступа)
+$containerPaddingMin: 15; // минимальный отступ
+// Ширина срабатывания первого брейкпоинта
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// Брейк-поинты
+$pc: em(1440); // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
+$tablet: em(991.98); // Планшеты, некоторые телефоны в горизонтальном положении
+$mobileBig: em(767.98); // Телефоны L
+$mobile: em(639.98); // Телефоны L
+$mobileSmall: em(479.98); // Телефоны S
+
+// Тип адаптива:
+// 1 = отзывчивость (у контейнера нет брейкпоинтов),
+// 2 = по брейк-поинтам (контейнер меняет свою ширину по брейк-поинтам)
+$responsiveType: 1;
+// </VARIABLES>=================================
+
+// <ОБНУЛЕНИЕ>=================================
+@import "base/null";
+// </ОБНУЛЕНИЕ>=================================
+
+// <BODY>=================================
+body {
+	background: $mainBgColor;
+	color: $mainTextColor;
+	// @include adaptiveValue("font-size", 25, 18);
+	// font-weight: 500;
+	// line-height: 187.5%;
+	// Скролл заблокирован
+	.lock & {
+		overflow: hidden;
+		touch-action: none;
+		overscroll-behavior: none;
+	}
+	// Сайт загружен
+	.loaded & {
+		// transition: opacity 0.8s ease 0s;
+		// opacity: 1;
+	}
+}
+// </BODY>=================================
+
+// <WRAPPER>=================================
+.wrapper {
+	width: 100%;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	// Прижимаем footer
+	> main {
+		flex: 1 1 auto;
+	}
+	// Фикс для слайдеров
+	> * {
+		min-width: 0;
+	}
+}
+// </WRAPPER>=================================
+
+// <CONTAINER>=================================
+/*
+(i) Стили будут применяться ко 
+всем классам содержащим *__container
+Например header__container, main__container и т.д.
+Снипет (HTML): cnt
+*/
+@if ($responsiveType==1) {
+	// Отзывчивая
+	[class*="__container"] {
+		@if ($maxWidthContainer>0) {
+			max-width: rem($containerWidth);
+			box-sizing: content-box;
+			margin: 0 auto;
+		}
+		@if ($containerPadding>0) {
+			@if ($maxWidthContainer>0) {
+				padding: 0 rem(math.div($containerPadding, 2));
+			} @else {
+				// @include adaptiveValue("padding-left", math.div($containerPadding, 2), $containerPaddingMin);
+				// @include adaptiveValue("padding-right", math.div($containerPadding, 2), $containerPaddingMin);
+			}
+		}
+	}
+} @else {
+	// По брейк-поинтам
+	[class*="__container"] {
+		margin: 0 auto;
+		@if ($maxWidthContainer>0) {
+			max-width: rem($maxWidthContainer);
+			box-sizing: content-box;
+		} @else {
+			@if ($containerPadding>0) {
+				padding: 0 rem(math.div($containerPadding, 2));
+			}
+		}
+		@media (max-width: $pc) {
+			max-width: rem(970);
+		}
+		@media (max-width: $tablet) {
+			max-width: rem(750);
+		}
+		@media (max-width: $mobileBig) {
+			max-width: none;
+			@if ($containerPadding>0 and $maxWidthContainer>0) {
+				padding: 0 rem(math.div($containerPadding, 2));
+			}
+		}
+	}
+}
+// </CONTAINER>=================================
+
+// <IMPORT>=================================
+// Подключение базовых стилей, шаблонов (заготовок) и вспомогательных  классов
+// Для подключения/отключения конкретных стилей смотри base.scss
+@import "base";
+@import "common"; // Подключение стилей общих элементов проекта
+// Подключение стилей отдельных блоков
+@import "header";
+@import "footer";
+// Подключение стилей отдельных страниц
+// @import "home";
+// </IMPORT>=================================
+
+//<MAIN>=================================
+.main-block {
+	// .main-block__container
+	&__container {
+		@include adaptiveValue("padding-top", 104, 60);
+		position: relative;
+		@media (min-width: $mobileBig) {
+			&::after {
+				content: "";
+				bottom: 0;
+				left: calc(794 / 1170 * 100%);
+				width: 100vw;
+				height: 100%;
+				position: absolute;
+				z-index: 1;
+				background-color: #bdccff;
+			}
+		}
+	}
+	// .main-block__body
+	&__body {
+		@include adaptiveValue("margin-top", 80, 20);
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		z-index: 3;
+	}
+	// .main-block__top
+	&__top {
+		@media (min-width: $mobileBig) {
+			display: flex;
+		}
+		@media (max-width: $mobileBig) {
+			margin: 0px 0px 20px 0px;
+		}
+	}
+	// .main-block__bottom
+	&__bottom {
+		display: flex;
+		justify-content: space-between;
+	}
+}
+.top-block {
+	// .top-block__content
+	&__content {
+		flex: 0 1 50%;
+	}
+	// .top-block__slider
+	&__slider {
+		flex: 0 1 50%;
+		min-width: 0;
+	}
+}
+.slider-block {
+	// .slider-block__body
+	&__body {
+		// position: relative;
+		@media (max-width: $mobileSmall) {
+			margin: 0px -15px;
+		}
+	}
+	// .slider-block__slide
+	&__slide {
+		// position: relative;
+	}
+	// .slider-block__image
+	&__image {
+		padding: 98% 0px 0px 0px;
+	}
+}
+.content-top {
+	// .content-top__sublable
+	&__sublable {
+		color: #f90;
+		font-family: "DMSans";
+		@include adaptiveValue("font-size", 22, 16);
+		font-weight: 700;
+		margin: 0px 0px calc(24px / 22px * 1em) 0px;
+		text-transform: uppercase;
+	}
+	// .content-top__box
+	&__box {
+		padding: 0px 10px;
+		@include adaptiveValue("margin-bottom", 48, 22);
+		h1 {
+			@include adaptiveValue("font-size", 54, 30);
+		}
+	}
+	// .content-top__form
+	&__form {
+		@include adaptiveValue("margin-bottom", 20, 10);
+	}
+}
+.form-content {
+	position: relative;
+	// .form-content__icon
+	&__icon {
+		&::before {
+			@include adaptiveValue("left", 33, 8);
+			@include adaptiveValue("font-size", 21, 16);
+			color: $darkGrayColor;
+			position: absolute;
+			z-index: 1;
+			@media (min-width: $mobileBig) {
+				top: 50%;
+				transform: translate(0px, -50%);
+			}
+			@media (max-width: $mobileBig) {
+				top: 23%;
+				transform: translate(0px, -50%);
+			}
+		}
+	}
+	// .form-content__input
+	&__input {
+		@include adaptiveValue("padding-left", 75, 32);
+		@include adaptiveValue("font-size", 20, 16);
+		color: $darkGrayColor;
+		&::placeholder {
+			color: $grayColor;
+		}
+		@media (max-width: $mobileBig) {
+			// &:not(:last-child) {
+			// 	margin: 0px 0px 10px 0px;
+			// }
+		}
+		@media (min-width: $mobileBig) {
+		}
+	}
+	// .form-content__button
+	&__button {
+		box-shadow: none;
+		border: 1px solid #dadada;
+		border-top: 0;
+		@media (max-width: $mobileBig) {
+			width: 100%;
+		}
+		@include adaptiveValue("min-height", 86, 43);
+		@media (min-width: $mobileBig) {
+			transform: translate(100%, 0px);
+			position: absolute;
+			z-index: 3;
+			top: 0;
+			right: 0px;
+			border: 0;
+		}
+	}
+}
+.bottom-block {
+	// .bottom-block__body
+	&__body {
+		flex: 1 1 auto;
+	}
+	// .bottom-block__subtitle
+	&__subtitle {
+		font-size: 17px;
+		@include adaptiveValue("font-size", 17, 14);
+		letter-spacing: 0.012rem;
+		&:not(:last-child) {
+			margin: 0px 0px calc(30px / 17px * 1em) 0px;
+		}
+	}
+	// .bottom-block__vendors
+	&__vendors {
+	}
+	// .bottom-block__controls
+	&__controls {
+		// position: relative;
+		flex: 0 0 calc(376 / 1170 * 100%);
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		@media (max-width: $mobileBig) {
+			display: none;
+		}
+	}
+}
+.controls-block {
+	// .controls-block__arrows
+	&__arrows {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		column-gap: 40px;
+		align-items: center;
+	}
+	// .controls-block__arrow
+	&__arrow {
+		color: #fff;
+		&::before {
+			@include adaptiveValue("font-size", 30, 15);
+		}
+		&_prev,
+		&_next {
+			@media (any-hover: hover) {
+				&:hover {
+					color: red;
+				}
+			}
+		}
+		// .controls-block__arrow_prev
+		&_prev {
+			&::before {
+				transform: rotate(-180deg);
+			}
+		}
+		// .controls-block__arrow_next
+		&_next {
+		}
+	}
+}
+.vendors {
+	// .vendors__list
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		@include adaptiveValue("column-gap", 45, 20);
+		@include adaptiveValue("row-gap", 10, 15);
+		@media (max-width: $mobileBig) {
+			justify-content: space-between;
+		}
+		@media (max-width: $mobile) {
+			justify-content: space-around;
+		}
+	}
+	// .vendors__item
+	&__item {
+		@media (any-hover: hover) {
+			&:hover .vendors__link {
+				color: red;
+			}
+		}
+	}
+	// .vendors__link
+	&__link {
+		color: $grayColor;
+		transition: color 0.3s ease 0s;
+		&::before {
+			@include adaptiveValue("font-size", 23, 20);
+		}
+	}
+}
+// ===<animation>===
+
+//</MAIN>=================================
+
+//<HOW>=================================
+.how {
+	// .how__container
+	&__container {
+	}
+	// .how__title
+	&__title {
+		text-align: center;
+		@include adaptiveValue("margin-bottom", 70, 30);
+	}
+	// .how__body
+	&__body {
+	}
+	// .how__columns
+	&__columns {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		@include adaptiveValue("row-gap", 45, 30);
+		@include adaptiveValue("column-gap", 100, 0);
+		@media (min-width: $mobileBig) {
+		}
+		@media (max-width: $mobileBig) {
+			grid-template-columns: repeat(auto-fill, minmax(auto, 260px));
+			justify-content: center;
+		}
+	}
+}
+.columns-how {
+	// .columns-how__item
+	&__item {
+		min-height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		&:nth-child(3) .columns-how__line,
+		&:last-child .columns-how__line {
+			display: none;
+		}
+		@media (max-width: $mobileBig) {
+			justify-items: center;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				.columns-how__line::after,
+				.columns-how__line::before {
+					transform: translate(0, -50%) scale(1.3);
+					animation: pulse 1.2s linear infinite;
+					/* ключевые кадры */
+					@keyframes pulse {
+						0% {
+							// opacity: 1;
+							// visibility: visible;
+							transform: translate(0, -50%) scale(1);
+						}
+						50% {
+							// opacity: 0;
+							// visibility: hidden;
+							transform: translate(0, -50%) scale(1.7);
+						}
+						100% {
+							// opacity: 0;
+							// visibility: hidden;
+							transform: translate(0, -50%) scale(1);
+						}
+					}
+				}
+			}
+		}
+	}
+	// .columns-how__icon
+	&__icon {
+		flex: 1 1 auto;
+		@media (any-hover: hover) {
+			&:hover {
+				.columns-how__frame::before {
+					transform: scale(1.3);
+				}
+			}
+		}
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 50, 25);
+		}
+	}
+	// .columns-how__line
+	&__line {
+		position: relative;
+		@include adaptiveValue("width", 210, 0);
+		@media (max-width: $mobileBig) {
+			display: none;
+		}
+		// .columns-how__line_left
+		&_left {
+			background-image: linear-gradient(90deg, transparent, transparent 50%, #fff 50%, #fff 100%),
+				linear-gradient(90deg, #9672ff, #4de0fd);
+		}
+		// .columns-how__line_right
+		&_right {
+			background-image: linear-gradient(90deg, transparent, transparent 50%, #fff 50%, #fff 100%),
+				linear-gradient(90deg, #4de0fd, #f2b8ec);
+			&::before {
+				background-color: #4de0fd;
+			}
+			&::after {
+				background-color: #f2b8ec;
+			}
+		}
+		@media (max-width: $mobileBig) {
+			// width: 200%;
+		}
+	}
+	// .columns-how__frame
+	&__frame {
+		width: 90px;
+		height: 90px;
+		border-radius: 20px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 20px;
+		&::before {
+			transition: transform 0.3s ease 0s;
+			font-size: 25px;
+			color: #fff;
+		}
+		// .columns-how__frame_purple
+		&_purple {
+			background-color: #9672ff;
+			box-shadow:
+				0px 100px 80px 0px rgba(150, 114, 255, 0.07),
+				0px 64.815px 46.852px 0px rgba(150, 114, 255, 0.05),
+				0px 38.519px 25.481px 0px rgba(150, 114, 255, 0.04),
+				0px 20px 13px 0px rgba(150, 114, 255, 0.04),
+				0px 8.148px 6.519px 0px rgba(150, 114, 255, 0.03),
+				0px 1.852px 3.148px 0px rgba(150, 114, 255, 0.02);
+		}
+		// .columns-how__frame_blue
+		&_blue {
+			background-color: #4ddffd;
+			box-shadow:
+				0px 100px 80px 0px rgba(77, 223, 253, 0.07),
+				0px 64.815px 46.852px 0px rgba(77, 223, 253, 0.05),
+				0px 38.519px 25.481px 0px rgba(77, 223, 253, 0.04),
+				0px 20px 13px 0px rgba(77, 223, 253, 0.04),
+				0px 8.148px 6.519px 0px rgba(77, 223, 253, 0.03),
+				0px 1.852px 3.148px 0px rgba(77, 223, 253, 0.02);
+		}
+		// .columns-how__frame_pink
+		&_pink {
+			background-color: #f2b8ec;
+			box-shadow:
+				0px 100px 80px 0px rgba(242, 184, 236, 0.07),
+				0px 64.815px 46.852px 0px rgba(242, 184, 236, 0.05),
+				0px 38.519px 25.481px 0px rgba(242, 184, 236, 0.04),
+				0px 20px 13px 0px rgba(242, 184, 236, 0.04),
+				0px 8.148px 6.519px 0px rgba(242, 184, 236, 0.03),
+				0px 1.852px 3.148px 0px rgba(242, 184, 236, 0.02);
+		}
+	}
+	// .columns-how__body
+	&__body {
+		text-align: center;
+		h2 {
+			@include adaptiveValue("font-size", 22, 20);
+		}
+	}
+}
+//</HOW>=================================
+
+//<DEALS>=================================
+.deals {
+	// .deals__container
+	&__container {
+	}
+	// .deals__title
+	&__title {
+		@include adaptiveValue("margin-bottom", 50, 35);
+		@media (min-width: $mobileBig) {
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+	// .deals__buttom
+	&__button {
+		align-self: flex-start;
+		border-radius: 5px;
+		@include adaptiveValue("min-height", 65, 45);
+		display: flex;
+		font-weight: 500;
+		justify-content: center;
+		align-items: center;
+		border-radius: 5px;
+	}
+	// .deals__menu
+	&__menu {
+		@include adaptiveValue("margin-bottom", 45, 20);
+	}
+	// .deals__columns
+	&__columns {
+		display: none;
+		@include adaptiveValue("gap", 30, 10);
+		@media (min-width: $mobile) {
+			grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+		}
+		&._active {
+			display: grid;
+		}
+	}
+	// .deals__item
+	&__item {
+		position: relative;
+		overflow: hidden;
+		border-radius: 5px;
+		@media (any-hover: hover) {
+			&:hover {
+				.deals__image {
+					transform: scale(1.1);
+				}
+			}
+		}
+	}
+	// .deals__labels
+	&__labels {
+		display: grid;
+		grid-template-columns: repeat(3, auto);
+		grid-auto-flow: row;
+		grid-auto-columns: 1fr;
+		justify-content: start;
+		align-content: start;
+		@include adaptiveValue("gap", 6, 3);
+		position: absolute;
+		@include adaptiveValue("top", 14, 5);
+		@include adaptiveValue("left", 14, 5);
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+	}
+	// .deals__label
+	&__label {
+		@include adaptiveValue("padding-top", 6, 3);
+		@include adaptiveValue("padding-bottom", 6, 3);
+		@include adaptiveValue("padding-left", 6, 3);
+		@include adaptiveValue("padding-right", 6, 3);
+		color: #fff;
+		text-align: center;
+		// @include adaptiveValue("font-size", 12, 11);
+		font-size: 12px;
+		font-weight: 400;
+		border-radius: 5px;
+		border: 1px solid #fff;
+		background: rgba(0, 0, 0, 0.4);
+		// .deals__label_futured
+		&_futured {
+		}
+		// .deals__label_3d
+		&_3d {
+		}
+	}
+	// .deals__image
+	&__image {
+		position: relative;
+		padding: 0px 0px calc(300 / 370 * 100%) 0px;
+		transition: all 0.3s ease 0s;
+	}
+}
+.title-deals {
+	// .title-deals__title
+	&__title {
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 auto;
+		@media (max-width: $mobileBig) {
+			margin: 0px 0px calc(30px / 40px * 1em) 0px;
+		}
+	}
+	// .title-deals__box
+	&__box {
+		max-width: 470px;
+	}
+}
+.menu-deals {
+	// .menu-deals__list
+	&__list {
+		padding: 0px 10px;
+		display: grid;
+		grid-template: auto / repeat(auto-fit, minmax(180px, auto));
+		justify-content: start;
+		row-gap: 5px;
+		@include adaptiveValue("column-gap", 50, 0);
+		@include adaptiveValue("row-gap", 15, 10);
+		@media (max-width: $mobileBig) {
+			grid-template-columns: repeat(2, auto);
+		}
+		@media (max-width: $mobile) {
+			// grid-template: auto auto/ repeat(2, 1fr);
+		}
+		@media (max-width: $mobileSmall) {
+			grid-template-columns: 1fr;
+		}
+	}
+	// .menu-deals__item
+	&__item {
+		&._active {
+			.menu-deals__link {
+				color: red;
+				&::after {
+					width: 100%;
+					height: 1%;
+					background-color: red;
+				}
+			}
+		}
+	}
+	// .menu-deals__link
+	&__link {
+		position: relative;
+		color: #000;
+		@include adaptiveValue("font-size", 19, 16);
+		font-weight: 400;
+		line-height: 150%;
+		transition: color 0.4s ease 0s;
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: -10px;
+			left: 0;
+			width: 0;
+			transition: width 0.4s ease 0s;
+		}
+	}
+}
+//</DEALS>=================================
+
+//<FEATURED>=================================
+.featured {
+	// .featured__container
+	&__container {
+	}
+	// .featured__title
+	&__title {
+		text-align: center;
+		@include adaptiveValue("margin-bottom", 80, 30);
+	}
+	// .featured__body
+	&__body {
+		@include adaptiveValue("padding", 40, 10);
+		@include adaptiveValue("padding-bottom", 82, 20);
+		@media (max-width: $mobileSmall) {
+			margin: 0px -15px;
+		}
+		@media (max-width: $tablet) {
+			align-items: center;
+		}
+		@media (min-width: $mobile) {
+			display: grid;
+			grid-template-columns: calc(491 / 1090 * 100%) 1fr;
+			@include adaptiveValue("column-gap", 77, 0);
+		}
+	}
+}
+.body-featured {
+	background-color: #f1ffff;
+	// .body-featured__preview
+	&__preview {
+		position: relative;
+	}
+	// .body-featured__image
+	&__image {
+		&:last-child {
+			@include adaptiveValue("margin-right", 40, 10);
+			@include adaptiveValue("margin-left", 40, 10);
+			margin-top: -25%;
+		}
+		padding: 0px 0px calc(364 / 491 * 100%) 0px;
+		// .body-featured__image_in
+		&_in {
+			padding: 0px 0px calc(278 / 491 * 100%) 0px;
+			box-shadow:
+				0px 163px 80px 0px rgba(0, 0, 0, 0.04),
+				0px 105.648px 46.852px 0px rgba(0, 0, 0, 0.03),
+				0px 62.785px 25.481px 0px rgba(0, 0, 0, 0.02),
+				0px 32.6px 13px 0px rgba(0, 0, 0, 0.02),
+				0px 13.281px 6.519px 0px rgba(0, 0, 0, 0.02),
+				0px 3.019px 3.148px 0px rgba(0, 0, 0, 0.01),
+				48px 58px 44px 0px rgba(0, 0, 0, 0.09);
+		}
+	}
+	// .body-featured__content
+	&__content {
+		@include adaptiveValue("margin-top", 82, 30);
+		// @include adaptiveValue("margin-left", 77, 0);
+		@media (min-width: $mobileBig) {
+			@include adaptiveValue("margin-right", 110, 0);
+		}
+	}
+}
+.body-content {
+	// .body-content__box
+	&__box {
+		@include adaptiveValue("margin-bottom", 42, 22);
+		& h2 {
+			color: #000;
+			@include adaptiveValue("font-size", 31, 20);
+			font-weight: 600;
+		}
+	}
+	// .body-content__reference
+	&__reference {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(50px, auto));
+		grid-template-rows: repeat(2, 1fr);
+		// justify-content: start;
+		@include adaptiveValue("column-gap", 60, 0);
+		@include adaptiveValue("row-gap", 37, 10);
+		@include adaptiveValue("margin-bottom", 54, 20);
+	}
+	// .body-content__button
+	&__button {
+		border-radius: 5px;
+		font-weight: 500;
+		text-transform: uppercase;
+		width: 100%;
+	}
+}
+.reference {
+	// .reference__item
+	&__item {
+		> *:not(:last-child) {
+			margin: 0px 0px calc(12px / 17px * 1em) 0px;
+		}
+	}
+	// .reference__title
+	&__title {
+		color: #000;
+		@include adaptiveValue("font-size", 17, 14);
+		font-weight: 700;
+	}
+	// .reference__text
+	&__text {
+		color: #545a58;
+		@include adaptiveValue("font-size", 17, 12);
+	}
+}
+//</FEATURED>=================================
+
+//<REVIEWS>=================================
+.reviews {
+	// .reviews__container
+	&__container {
+	}
+	// .reviews__title
+	&__title {
+		max-width: 570px;
+		font-weight: 600;
+		&:not(:last-child) {
+			margin: 0px 0px calc(50px / 40px * 1em) 0px;
+		}
+	}
+	// .reviews__columns
+	&__columns {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+		grid-auto-rows: 1fr;
+		@include adaptiveValue("column-gap", 30, 10);
+		@include adaptiveValue("row-gap", 30, 10);
+		@include adaptiveValue("margin-bottom", 85, 30);
+	}
+	// .reviews__item
+	&__item {
+		display: grid;
+		grid-auto-flow: row;
+		grid-template: auto 1fr minmax(48px, auto) / 1fr;
+		row-gap: 33px;
+	}
+	// .reviews__bottom
+	&__bottom {
+		@media (max-width: $mobileBig) {
+			text-align: center;
+			> *:not(:last-child) {
+				margin: 0px 0px calc(15px / 16px * 1em) 0px;
+			}
+		}
+		@media (min-width: $mobileBig) {
+			display: flex;
+			align-items: center;
+		}
+	}
+	// .reviews__vendors
+	&__vendors {
+		@media (min-width: $mobileBig) {
+			flex: 1 1 auto;
+			@include adaptiveValue("margin-right", 100, 10);
+			@include adaptiveValue("margin-left", 35, 0);
+		}
+
+		.vendors__link::before {
+			@include adaptiveValue("font-size", 26, 20);
+		}
+	}
+	// .reviews__more-info
+	&__more-info {
+		flex: 0 0 360px;
+		font-weight: 400;
+		line-height: 150%;
+		a {
+			color: #2cbde7;
+			@media (any-hover: hover) {
+				&:hover {
+					text-decoration-line: underline;
+				}
+			}
+		}
+	}
+}
+.item-reviews {
+	border-radius: 10px;
+	border: 1px solid #ebebeb;
+	background-color: #fff;
+	transition: all 0.3s ease 0s;
+	@include adaptiveValue("padding-top", 50, 10);
+	@include adaptiveValue("padding-bottom", 50, 10);
+	@include adaptiveValue("padding-left", 38, 10);
+	@include adaptiveValue("padding-right", 38, 10);
+	@media (any-hover: hover) {
+		&:hover {
+			border: 1px solid #fff;
+			border-radius: 10px;
+			box-shadow:
+				0px 100px 80px 0px rgba(0, 0, 0, 0.03),
+				0px 64.815px 46.852px 0px rgba(0, 0, 0, 0.02),
+				0px 38.519px 25.481px 0px rgba(0, 0, 0, 0.02),
+				0px 20px 13px 0px rgba(0, 0, 0, 0.01),
+				0px 8.148px 6.519px 0px rgba(0, 0, 0, 0.01),
+				0px 1.852px 3.148px 0px rgba(0, 0, 0, 0.01),
+				3px 44px 54px 0px rgba(0, 0, 0, 0.08);
+		}
+	}
+	// .item-reviews__raiting
+	&__rating {
+		@include adaptiveValue("font-size", 35, 25);
+		color: $grayColor;
+	}
+	// .item-reviews__text
+	&__text {
+		line-height: 175%;
+	}
+	// .item-reviews__author
+	&__author {
+		display: flex;
+		align-items: center;
+		column-gap: 20px;
+	}
+	// .item-reviews__avatar
+	&__avatar {
+	}
+	// .item-reviews__body
+	&__body {
+		> *:not(:last-child) {
+			margin: 0px 0px calc(3px / 16px * 1em) 0px;
+		}
+	}
+	// .item-reviews__name
+	&__name {
+		font-weight: 700;
+	}
+	// .item-reviews__location
+	&__location {
+		color: #666;
+		font-size: 14px;
+		font-weight: 400;
+	}
+}
+//</REVIEWS>=================================
+
+//<SUBSCRIBE>=================================
+.subscribe {
+	background-color: #fbfcfc;
+	@include adaptiveValue("padding-top", 160, 40);
+	// .subscribe__container
+	&__container {
+	}
+	// .subscribe__header
+	&__header {
+		text-align: center;
+		:last-child {
+			@include adaptiveValue("margin-bottom", 34, 15);
+		}
+		> *:not(:last-child) {
+			margin: 0px 0px calc(11px / 45px * 1em) 0px;
+		}
+	}
+	// .subscribe__title
+	&__title {
+	}
+	// .subscribe__subtitle
+	&__subtitle {
+		color: var(--TEXT, #31353b);
+		font-family: Manrope;
+		font-size: 23px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 144.2%; /* 33.166px */
+		letter-spacing: 0.46px;
+	}
+	// .subscribe__form
+	&__form {
+		background-color: #fff;
+		margin: 0px auto;
+		max-width: 686px;
+		@media (min-width: $mobileSmall) {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+}
+.form-subscribe {
+	box-shadow:
+		0px 163px 80px 0px rgba(0, 0, 0, 0.04),
+		0px 105.648px 46.852px 0px rgba(0, 0, 0, 0.03),
+		0px 62.785px 25.481px 0px rgba(0, 0, 0, 0.02),
+		0px 32.6px 13px 0px rgba(0, 0, 0, 0.02),
+		0px 13.281px 6.519px 0px rgba(0, 0, 0, 0.02),
+		0px 3.019px 3.148px 0px rgba(0, 0, 0, 0.01);
+	@include adaptiveValue("padding", 30, 15);
+	// .form-subscribe__content
+	&__content {
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 auto;
+		@media (max-width: $mobileSmall) {
+			margin: 0px 0px calc(11px / 16px * 1em) 0px;
+		}
+	}
+	// .form-subscribe__label
+	&__label {
+		color: $grayColor;
+		font-size: 17px;
+		font-weight: 500;
+		line-height: 144.2%; /* 24.514px */
+		letter-spacing: 0.024rem;
+		&:not(:last-child) {
+			margin: 0px 0px calc(11px / 17px * 1em) 0px;
+		}
+	}
+	// .form-subscribe__input
+	&__input {
+		color: $darkGrayColor;
+		@include adaptiveValue("font-size", 20, 16);
+		font-weight: 700;
+		line-height: 144.2%; /* 28.84px */
+		letter-spacing: 0.029rem;
+	}
+	// .form-subscribe__button
+	&__button {
+		@media (max-width: $mobileSmall) {
+			width: 100%;
+		}
+	}
+}
+//</SUBSCRIBE>=================================
+
+//<SERVICES>=================================
+
+//===<animation>===
+
+//</SERVICES>=================================
+
+//<REVIEWS>=================================
+
+//===<animation>===
+
+//</REVIEWS>=================================
+
+//<LOCATION>=================================
+
+//</LOCATION>=================================
+// </ОБЩИЙ СТИЛЬ>=================================
+
+//<screen-01>=================================
+
+//</screen-01>=================================
+
+//<screen-02>=================================
+
+//</screen-02>=================================
+
+//</screen-03>=================================
+
+//</screen-03>=================================
