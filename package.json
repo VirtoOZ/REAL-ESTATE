@@ -36,7 +36,7 @@
 		"eslint-plugin-react-refresh": "latest",
 		"file-include-webpack-plugin-replace": "latest",
 		"file-loader": "^6.2.0",
-		"gulp": "latest",
+		"gulp": "5.0.0",
 		"gulp-autoprefixer": "latest",
 		"gulp-clean-css": "latest",
 		"gulp-fonter-fix": "latest",
@@ -86,7 +86,7 @@
 		"isotope-layout": "^3.0.6",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"sass": "^1.77.6",
+		"sass": "1.77.6",
 		"simplebar": "latest"
 	}
 }

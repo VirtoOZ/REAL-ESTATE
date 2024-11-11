@@ -12,12 +12,21 @@ textarea {
 	border-radius: 0 !important;
 	width: 100%;
 	display: block;
-	padding: 0px 20px;
-	border: 1px solid #eee;
+	padding: 0px 15px;
 	caret-color: inherit;
+
 	&._form-focus {
+		border: 1px solid red;
+		box-shadow:
+			0px 100px 80px 0px rgba(255, 0, 0, 0.12),
+			0px 64.815px 46.852px 0px rgba(255, 0, 0, 0.08),
+			0px 38.519px 25.481px 0px rgba(255, 0, 0, 0.08),
+			0px 20px 13px 0px rgba(255, 0, 0, 0.04),
+			0px 8.148px 6.519px 0px rgba(225, 0, 0, 0.04),
+			0px 1.852px 3.148px 0px rgba(255, 0, 0, 0.04);
 	}
 	&._form-error {
+		border: 2px solid red;
 	}
 }
 .input[placeholder]:not([data-placeholder-nohiden]) {
