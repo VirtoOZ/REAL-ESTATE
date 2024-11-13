@@ -9,7 +9,7 @@
 			<section class="page__main-block main-block">
 				<div class="main-block__container">
 					<div class="main-block__body">
-						<div class="main-block__top top-block _form-focus">
+						<div class="main-block__top top-block">
 							<div class="top-block__content content-top">
 								<div class="content-top__sublable">RESIDENTIAL & OFFICE SPACES</div>
 								<div class="content-top__box title-box">
@@ -20,7 +20,7 @@
 								</div>
 								<form class="content-top__form form-content form" action="#">
 									<div class="form-content__icon _icon-home1"></div>
-									<input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Enter Zipcode to search properties" class="form-content__input input">
+									<input data-no-validate autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Enter Zipcode to search properties" class="form-content__input input">
 									<button type="submit" class="form-content__button button">Search Now!</button>
 								</form>
 							</div>
@@ -46,19 +46,19 @@
 								<div class="bottom-block__subtitle">Our Amazing Partners</div>
 								<div class="bottom-block__vendors vendors">
 									<ul class="vendors__list">
-										<li class="vendors__item"><a href="" class="vendors__link _icon-buzz"></a></li>
-										<li class="vendors__item"><a href="" class="vendors__link _icon-chase"></a></li>
-										<li class="vendors__item"><a href="" class="vendors__link _icon-microsoft"></a></li>
-										<li class="vendors__item"><a href="" class="vendors__link _icon-gucc"></a></li>
-										<li class="vendors__item"><a href="" class="vendors__link _icon-airbnb"></a></li>
-										<li class="vendors__item"><a href="" class="vendors__link _icon-uber"></a></li>
+										<li class="vendors__item"><a href="" aria-label="buzz" class="vendors__link _icon-buzz"></a></li>
+										<li class="vendors__item"><a href="" aria-label="chase" class="vendors__link _icon-chase"></a></li>
+										<li class="vendors__item"><a href="" aria-label="microsoft" class="vendors__link _icon-microsoft"></a></li>
+										<li class="vendors__item"><a href="" aria-label="gucc" class="vendors__link _icon-gucc"></a></li>
+										<li class="vendors__item"><a href="" aria-label="airbnb" class="vendors__link _icon-airbnb"></a></li>
+										<li class="vendors__item"><a href="" aria-label="uber" class="vendors__link _icon-uber"></a></li>
 									</ul>
 								</div>
 							</div>
 							<div class="bottom-block__controls controls-block">
 								<div class="controls-block__arrows">
-									<button type="button" class="controls-block__arrow controls-block__arrow_prev _icon-arrow-right"></button>
-									<button type="button" class="controls-block__arrow controls-block__arrow_next _icon-arrow-right"></button>
+									<button type="button" aria-label="arrow-prev" class="controls-block__arrow controls-block__arrow_prev _icon-arrow-right"></button>
+									<button type="button" aria-label="arrow-next" class="controls-block__arrow controls-block__arrow_next _icon-arrow-right"></button>
 								</div>
 							</div>
 						</div>
@@ -399,11 +399,11 @@
 					<div class="reviews__bottom">
 						<div class="reviews__vendors vendors">
 							<ul class="vendors__list">
-								<li class="vendors__item"><a href="" class="vendors__link _icon-airbnb"></a></li>
-								<li class="vendors__item"><a href="" class="vendors__link _icon-cisco"></a></li>
-								<li class="vendors__item"><a href="" class="vendors__link _icon-ebay"></a></li>
-								<li class="vendors__item"><a href="" class="vendors__link _icon-uber"></a></li>
-								<li class="vendors__item"><a href="" class="vendors__link _icon-microsoft"></a></li>
+								<li class="vendors__item"><a href="" aria-label="airbnb" class="vendors__link _icon-airbnb"></a></li>
+								<li class="vendors__item"><a href="" aria-label="cisco" class="vendors__link _icon-cisco"></a></li>
+								<li class="vendors__item"><a href="" aria-label="ebay" class="vendors__link _icon-ebay"></a></li>
+								<li class="vendors__item"><a href="" aria-label="uber" class="vendors__link _icon-uber"></a></li>
+								<li class="vendors__item"><a href="" aria-label="microsoft" class="vendors__link _icon-microsoft"></a></li>
 							</ul>
 						</div>
 						<div class="reviews__more-info">
@@ -418,10 +418,10 @@
 						<h2 class="subscribe__title title-box__title">Get Our Newsletter</h2>
 						<div class="subscribe__subtitle">To join the worldwide community</div>
 					</div>
-					<form action="#" class="subscribe__form form-subscribe">
+					<form data-dev data-popup-message="#form-message" action="#" class="subscribe__form form-subscribe">
 						<div class="form-subscribe__content">
 							<label for="input-1" class="form-subscribe__label">Type your Email Address</label>
-							<input autocomplete="off" type="email" id="input-1" name="form[]" placeholder="shakir260@gmail.com" class="form-subscribe__input input">
+							<input data-required="email" autocomplete="off" type="email" id="input-1" name="form[]" placeholder="shakir260@gmail.com" class="form-subscribe__input input">
 						</div>
 						<button type="submit" class="form-subscribe__button button">Send Now</button>
 					</form>

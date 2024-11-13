@@ -213,7 +213,7 @@ export function formSubmit() {
 			}
 		}));
 		// Попап показывает, если подключен модуль попапов
-// и для формы указана настройка
+		// и для формы указана настройка
 		setTimeout(() => {
 			if (flsModules.popup) {
 				const popup = form.dataset.popupMessage;
@@ -389,7 +389,7 @@ export function formRating() {
 			index === 0 ? ratingItems += `<div class="rating__items">` : null
 			ratingItems += `
 				<label class="rating__item">
-					<input class="rating__input" type="radio" name="rating" value="${index + 1}">
+					<input class="rating__input" type="radio" name="rating" value="${index + 1}" aria-label="star">
 				</label>`
 			index === ratingSize ? ratingItems += `</div">` : null
 		}
