@@ -5,7 +5,7 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	&._scroll {
+	&._header-scroll {
 		@media (any-hover: hover) {
 			&:hover {
 				.header__logo {
@@ -146,44 +146,8 @@
 			}
 		}
 	}
-	// .header__body-logo
-	&__body-logo {
-		position: relative;
-		z-index: 5;
-		@media (any-hover: hover) {
-			&:hover {
-				.header__logo {
-					color: red;
-				}
-				animation: ripple 0.1s linear 4;
-			}
-			/* ключевые кадры */
-			@keyframes ripple {
-				0% {
-					transform: rotate(0deg) scale(1);
-				}
-				25% {
-					transform: rotate(1deg) scale(1.1);
-				}
-				50% {
-					transform: rotate(0) scale(1);
-				}
-				75% {
-					transform: rotate(-1deg) scale(1.1);
-				}
-				100% {
-					transform: rotate(0deg) scale(1);
-				}
-			}
-		}
-	}
 	// .header__logo
 	&__logo {
-		color: $darkGrayColor;
-		font-weight: 800;
-		@include adaptiveValue("font-size", 23, 18);
-		padding: 0px 10px 0px 0px;
-		transition: color 0.3s ease 0s;
 	}
 	// .header__menu
 	&__menu {
@@ -195,6 +159,8 @@
 	&__icon-menu {
 	}
 }
+
+//<MENU>=======================================
 .menu {
 	// .menu__body
 	&__body {
@@ -203,15 +169,10 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background-color: #f1ffff;
+			background-color: #bdccff;
 			top: -120%;
-			transition: top 0.5s ease 0s;
 			overflow: auto;
-		}
-		&._active {
-			@media (max-width: $mobile) {
-				top: 0;
-			}
+			transition: top 0.5s ease 0s;
 		}
 	}
 	// .menu__list
@@ -272,8 +233,6 @@
 	&__icon {
 	}
 }
-//<MENU>=======================================
-
 //</MENU>=======================================
 
 //<BURGER>=======================================
@@ -330,6 +289,17 @@
 		}
 	}
 }
+
+//<MENU-OPEN>=================================
+.menu-open {
+}
+.menu-open .menu__body::before,
+.menu-open .menu__body,
+.menu-open ._header-scroll .header__logo,
+.menu-open ._header-scroll .header__menu {
+	top: 0;
+}
+//</MENU-OPEN>=================================
 //</BURGER>=================================
 
 //</HEADER>=================================

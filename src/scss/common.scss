@@ -207,7 +207,43 @@
 	z-index: 100;
 	transition: all 1s ease 0s;
 }
-
+.logo {
+	position: relative;
+	z-index: 5;
+	&__link {
+		color: $darkGrayColor;
+		font-weight: 800;
+		@include adaptiveValue("font-size", 23, 18);
+		padding: 0px 10px 0px 0px;
+		transition: color 0.3s ease 0s;
+	}
+	@media (any-hover: hover) {
+		&:hover {
+			.logo__link {
+				color: red;
+			}
+			animation: ripple 0.1s linear 4;
+		}
+		/* ключевые кадры */
+		@keyframes ripple {
+			0% {
+				transform: rotate(0deg) scale(1);
+			}
+			25% {
+				transform: rotate(1deg) scale(1.1);
+			}
+			50% {
+				transform: rotate(0) scale(1);
+			}
+			75% {
+				transform: rotate(-1deg) scale(1.1);
+			}
+			100% {
+				transform: rotate(0deg) scale(1);
+			}
+		}
+	}
+}
 //<GLOBAL Animations>=================================
 
 //</GLOBAL Animations>=================================

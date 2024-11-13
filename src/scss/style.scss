@@ -27,7 +27,7 @@ $mainBgColor: #fafafa; //приглушить цвет для комфорта �
 // Настройки адаптивной сетки
 $minWidth: 320; // Минимальная ширина страницы
 $maxWidth: 1440; // Ширина полотна (макета)
-$maxWidthContainer: 1200; // Ширина ограничивающего контейнера (0 = нет ограничения)
+$maxWidthContainer: 1140; // Ширина ограничивающего контейнера (0 = нет ограничения)
 // Общий отступ у контейнера
 $containerPadding: 30; // (30 = по 15px слева и справа, 0 = нет отступа)
 $containerPaddingMin: 15; // минимальный отступ
@@ -156,6 +156,8 @@ body {
 
 //<MAIN>=================================
 .main-block {
+	// display: flex;
+	// align-items: center;
 	// .main-block__container
 	&__container {
 		@include adaptiveValue("padding-top", 104, 60);
@@ -172,6 +174,9 @@ body {
 				background-color: #bdccff;
 			}
 		}
+	}
+	// .main-block__social
+	&__social {
 	}
 	// .main-block__body
 	&__body {
@@ -196,6 +201,70 @@ body {
 		justify-content: space-between;
 	}
 }
+.social {
+	position: fixed;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 0;
+	z-index: 3;
+	@include adaptiveValue("padding-right", 40, 10);
+	// .social__body
+	&__body {
+		display: flex;
+		@include adaptiveValue("row-gap", 30, 10);
+		flex-direction: column;
+		align-items: center;
+	}
+	// .social__item
+	&__item {
+		color: #000;
+		transition:
+			color 0.2s ease 0s,
+			transform 0.2s ease 0s;
+		@include adaptiveValue("font-size", 21, 16);
+		// .social__item_facebook
+		&_facebook {
+			@media (any-hover: hover) {
+				&:hover {
+					color: #335bf5;
+				}
+			}
+		}
+		// .social__item_instagramm
+		&_instagramm {
+			&::before {
+				// font-weight: 400;
+			}
+			@media (any-hover: hover) {
+				&:hover {
+					color: #e51f5a;
+				}
+			}
+		}
+		// .social__item_twitter
+		&_twitter {
+			@media (any-hover: hover) {
+				&:hover {
+					color: #21a6df;
+				}
+			}
+		}
+		// .social__item_linkedin
+		&_linkedin {
+			@media (any-hover: hover) {
+				&:hover {
+					color: #335bf5;
+				}
+			}
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				transform: scale(1.2);
+			}
+		}
+	}
+}
+
 .top-block {
 	// .top-block__content
 	&__content {
@@ -287,16 +356,6 @@ body {
 			border-bottom: 0;
 		}
 		color: $darkGrayColor;
-		// &::placeholder {
-		// 	color: $grayColor;
-		// }
-		@media (max-width: $mobileBig) {
-			// &:not(:last-child) {
-			// 	margin: 0px 0px 10px 0px;
-			// }
-		}
-		@media (min-width: $mobileBig) {
-		}
 	}
 	// .form-content__button
 	&__button {
@@ -760,11 +819,9 @@ body {
 		row-gap: 5px;
 		@include adaptiveValue("column-gap", 50, 0);
 		@include adaptiveValue("row-gap", 15, 10);
+		@include adaptiveValue("margin-bottom", 57, 25);
 		@media (max-width: $mobileBig) {
 			grid-template-columns: repeat(2, auto);
-		}
-		@media (max-width: $mobile) {
-			// grid-template: auto auto/ repeat(2, 1fr);
 		}
 		@media (max-width: $mobileSmall) {
 			grid-template-columns: 1fr;
@@ -772,6 +829,17 @@ body {
 	}
 	// .tabs-deals__title
 	&__title {
+		position: relative;
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: -5px;
+			left: 0;
+			width: 0%;
+			height: 1%;
+			transition: width 0.4s ease 0s;
+			background-color: red;
+		}
 		&._tab-active {
 			color: red;
 			&::after {
@@ -789,14 +857,22 @@ body {
 	}
 	// .tabs-deals__items
 	&__items {
-		display: flex;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(rem(290), 1fr));
+		@include adaptiveValue("gap", 30, 10);
+		@media (max-width: $tablet) {
+			grid-template-columns: repeat(auto-fill, minmax(rem(250), 1fr));
+			justify-content: center;
+		}
+		@media (max-width: $mobile) {
+			grid-template-columns: repeat(auto-fill, minmax(rem(220), 1fr));
+		}
 	}
 	// .tabs-deals__item
 	&__item {
-		flex: 0 1 33.333%;
 		position: relative;
 		overflow: hidden;
-		border-radius: 5px;
+		border-radius: rem(5);
 		@media (any-hover: hover) {
 			&:hover {
 				.tabs-deals__image {
@@ -886,17 +962,29 @@ body {
 	&__preview {
 		position: relative;
 	}
+
 	// .body-featured__image
 	&__image {
-		&:last-child {
+		padding: 0px 0px calc(364 / 491 * 100%) 0px;
+		// .body-featured__image_big
+		&_big {
+			transition: margin-bottom 0.3s ease 0s;
+			@media (any-hover: hover) {
+				&:hover {
+					margin-bottom: 25%;
+				}
+			}
+		}
+		// .body-featured__image_in
+		&_in {
 			@include adaptiveValue("margin-right", 40, 10);
 			@include adaptiveValue("margin-left", 40, 10);
 			margin-top: -25%;
-		}
-		padding: 0px 0px calc(364 / 491 * 100%) 0px;
-		// .body-featured__image_in
-		&_in {
-			padding: 0px 0px calc(278 / 491 * 100%) 0px;
+			padding-bottom: calc(278 / 491 * 100%);
+			transition:
+				padding-bottom 0.3s ease 0s,
+				margin-left 0.3s ease 0s,
+				margin-right 0.3s ease 0s;
 			box-shadow:
 				0px 163px 80px 0px rgba(0, 0, 0, 0.04),
 				0px 105.648px 46.852px 0px rgba(0, 0, 0, 0.03),
@@ -905,6 +993,15 @@ body {
 				0px 13.281px 6.519px 0px rgba(0, 0, 0, 0.02),
 				0px 3.019px 3.148px 0px rgba(0, 0, 0, 0.01),
 				48px 58px 44px 0px rgba(0, 0, 0, 0.09);
+		}
+		@media (any-hover: hover) {
+			&:first-child:hover {
+			}
+			&:last-child:hover {
+				margin-left: 0;
+				margin-right: 0;
+				padding-bottom: 67%;
+			}
 		}
 	}
 	// .body-featured__content
@@ -1059,8 +1156,6 @@ body {
 	}
 	// .item-reviews__raiting
 	&__rating {
-		@include adaptiveValue("font-size", 35, 25);
-		color: $grayColor;
 	}
 	// .item-reviews__text
 	&__text {
