@@ -1,4 +1,3 @@
-
 function mapAdd() {
 	let tag = document.createElement('script');
 	tag.src = "https://maps.google.com/maps/api/js?sensor=false&amp;key=&callback=mapInit";

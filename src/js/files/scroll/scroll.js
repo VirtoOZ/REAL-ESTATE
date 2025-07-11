@@ -1,4 +1,3 @@
-// Подключение функционала "Чертоги Фрилансера"
 import { isMobile, getHash, menuClose, getDigFormat } from "../functions.js";
 import { flsModules } from "../../files/modules.js";
 // Модуль прокрутки к блоку
@@ -10,10 +9,10 @@ let addWindowScrollEvent = false;
 // Плавная навигация по странице
 export function pageNavigation() {
 	// data-goto – указать ID блока
-// data-goto-header -учитывать header
-// data-goto-top – недокрутить на указанный размер
-// data-goto-speed – скорость (только если используется дополнительный плагин)
-// Работаем при нажатии на пункт
+	// data-goto-header -учитывать header
+	// data-goto-top – недокрутить на указанный размер
+	// data-goto-speed – скорость (только если используется дополнительный плагин)
+	// Работаем при нажатии на пункт
 	document.addEventListener("click", pageNavigationAction);
 	// Если подключен scrollWatcher, то подсвечиваем текущий пункт меню
 	document.addEventListener("watcherCallback", pageNavigationAction);
@@ -59,7 +58,7 @@ export function pageNavigation() {
 				}
 				if (entry.isIntersecting) {
 					// Видим объект
-// navigatorActiveItem ? navigatorActiveItem.classList.remove('_navigator-active') : null;
+					// navigatorActiveItem ? navigatorActiveItem.classList.remove('_navigator-active') : null;
 					navigatorCurrentItem ? navigatorCurrentItem.classList.add('_navigator-active') : null;
 					//const activeItems = document.querySelectorAll('._navigator-active');
 					//activeItems.length > 1 ? chooseOne(activeItems) : null

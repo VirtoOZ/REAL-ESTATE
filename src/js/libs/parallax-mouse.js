@@ -1,8 +1,3 @@
-//Модуль параллакса мышью
-//(c)Фрилансер по жизни, "Хмурый Кот"
-//Документация:
-
-//Подключение функционала "Чертоги Фрилансера"
 import { isMobile, FLS } from "../files/functions.js";
 import { flsModules } from "../files/modules.js";
 
@@ -109,6 +104,3 @@ class MousePRLX {
 }
 // Запускаем и добавляем в объект модулей
 flsModules.mousePrlx = new MousePRLX({});
-
-
-

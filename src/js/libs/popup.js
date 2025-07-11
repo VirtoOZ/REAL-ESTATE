@@ -1,8 +1,3 @@
-//Модуль попапов
-// Документация по работе в шаблоне: https://start-template.ru/modul-popup-vytekayushhie-modalnye-okna-chertogi-frilansera-v3-0-0/
-// Сниппет (HTML): pl
-
-// Подключение функционала "Чертоги Фрилансера"
 import { isMobile, bodyLockStatus, bodyLock, bodyUnlock, bodyLockToggle, FLS } from "../files/functions.js";
 import { flsModules } from "../files/modules.js";
 
